@@ -1,0 +1,92 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/Roboto/Roboto-Regular.woff2') format('woff2'),
+    url('./fonts/Roboto/Roboto-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/Roboto/Roboto-Bold.woff2') format('woff2'),
+    url('./fonts/Roboto/Roboto-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font: 400 18px/1.22 'Roboto', sans-serif;
+}
+
+.wrap {
+  width: 0;
+}
+
+.login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+
+  &__img {
+    width: 70px;
+    height: 70px;
+    margin-right: 9px;
+  }
+
+  &__title {
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+}
+
+.form-auth {
+  label {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    width: 40%;
+    background-image: url('./images/wpap_final.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .login {
+    width: 60%;
+  }
+
+  .logo {
+
+    &__img {
+      width: 100px;
+      height: 100px;
+    }
+
+    &__title {
+      font-size: 3rem;
+    }
+  }
+}
+
+@media (min-width: 991px) {
+
+  .logo {
+    &__title {
+      font-size: 4rem;
+    }
+  }
+}
