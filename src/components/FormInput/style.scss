@@ -1,0 +1,28 @@
+.form-box {
+  margin-bottom: 12px;  
+  color: #1a1a2e;
+  
+  label {        
+    display: block;
+    margin-bottom: 7px;
+    margin-left: 20px;
+    font-size: .78rem;
+  }
+
+  &__input {        
+    width: 290px;
+    padding: 14px 17px 13px;     
+    font: normal 1rem/1.22 Roboto, sans-serif;
+    background-color: #fefefe;
+    border: 1px solid #c0bfbf;
+    border-radius: 10px;
+  }
+} 
+
+@media (min-width: 576px) {
+  .form-box {
+    &__input {    
+      width: 350px
+    }
+  }
+}

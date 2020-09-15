@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './style.scss';
+
 const FormInput = ({
   label,
   className,
@@ -11,7 +13,7 @@ const FormInput = ({
 }) => {
 
   return (
-    <div>
+    <div className="form-box">
       <label htmlFor={name}>{label} </label>
       <input
         id={name}
