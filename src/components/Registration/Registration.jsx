@@ -35,7 +35,7 @@ const Registration = () => {
         </div>
       </form>
       <p className="auth-link">
-        If you have account you can <Link to="/Login" >Login</Link>
+        If you have account you can <Link to="/login" >Login</Link>
       </p>
     </>
   );
