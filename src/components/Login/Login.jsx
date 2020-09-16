@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import Button from '../Button';
 import FormInput from '../FormInput';
 
-import { passwordValidationData } from '../../constants/formPatterns';
+import { loginValidationData, passwordValidationData } from '../../constants/formPatterns';
 
 const Login = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -25,7 +25,7 @@ const Login = () => {
           name="login"
           placeholder="Enter your login"
           error={errors.login}
-          reference={register}
+          reference={register(loginValidationData)}
         />
         <FormInput
           label="Password"
