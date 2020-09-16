@@ -12,9 +12,9 @@ const Header = () => {
     <header className="main-header">
       <Wrapper>
         <div className="main-header__inner">
-          <form className='form-search'>
+          <form className='form-search' onSubmit={e => e.preventDefault()}>
             <FormInput
-              className="form-serch__input"
+              className="field-wrap__input search-input"
               type="serch"
               name="serch"
               placeholder="Enter login"
