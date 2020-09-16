@@ -1,27 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from "react-hook-form";
 
 import Button from '../Button';
 import FormInput from '../FormInput';
 
+import { passwordValidationData } from '../../constants/formPatterns';
+
 const Login = () => {
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = ({ login, password }) => {
+    console.log(login, password)
+  }
+
   return (
     <>
-      <form className="form-auth">
+      <form className="form-auth" onSubmit={handleSubmit(onSubmit)}>
         <h3 className="form-auth__title">Sing In</h3>
         <FormInput
           label="Login"
-          className="form-box__input"
+          className="field-wrap__input"
           type="text"
           name="login"
           placeholder="Enter your login"
+          error={errors.login}
+          reference={register}
         />
         <FormInput
           label="Password"
-          className="form-box__input"
+          className="field-wrap__input"
           type="password"
           name="password"
           placeholder="Enter your password"
+          error={errors.password}
+          reference={register(passwordValidationData)}
         />
         <div className="btn-wrapper">
           <Button className="btn" type="submit" title="Sing In" />
