@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import Logo from '../../components/Logo';
 import Login from '../../components/Login';
-import Wrapper from '../../components/Wrapper';
 import Registration from '../../components/Registration';
 
 import './style.scss'
@@ -11,7 +10,7 @@ import './style.scss'
 const Auth = () => {
 
   return (
-    <Wrapper>
+    <section className='auth-wrapper'>
       <div className="auth-img"></div>
       <div className="auth">
         <Logo />
@@ -21,7 +20,7 @@ const Auth = () => {
           <Redirect to="/login" />
         </Switch>
       </div>
-    </Wrapper>
+    </section>
   )
 }
 
