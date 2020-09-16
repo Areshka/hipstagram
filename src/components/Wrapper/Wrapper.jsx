@@ -3,9 +3,9 @@ import './style.scss';
 
 const Wrapper = ({ children }) => {
   return (
-    <section className='auth-wrapper'>
+    <div className='container'>
       {children}
-    </section>
+    </div>
   );
 }
 
