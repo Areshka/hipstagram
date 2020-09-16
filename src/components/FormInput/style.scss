@@ -1,20 +1,23 @@
+.form-auth .field-wrap {
+  margin-bottom: 12px;
+}
+
 .field-wrap {
   width: 100%;
   max-width: 350px;
-  margin-bottom: 12px;  
-  color: #1a1a2e;   
-  
-  label {        
+  color: #1a1a2e;
+
+  label {
     display: block;
     margin-bottom: 7px;
     margin-left: 15px;
     font-size: .78rem;
   }
 
-  &__input {        
-    width: 100%;    
+  &__input {
+    width: 100%;
     margin-bottom: 6px;
-    padding: 14px 17px 13px;     
+    padding: 14px 17px 13px;
     font: normal 1rem/1.22 Roboto, sans-serif;
     background-color: #fefefe;
     border: 2px solid #c0bfbf;
@@ -25,20 +28,12 @@
     &:focus {
       border: 2px solid #4d88ed;
     }
-
-    &--error {
-      border-color: rgb(243, 69, 69);      
-
-      &:focus {
-        border-color:  rgb(243, 69, 69);        
-      }
-    }
   }
 
   &__error-message {
     margin: 0;
     margin-left: 10px;
-    font-size: .667rem;    
+    font-size: .667rem;
     color: #ff3535;
   }
 }

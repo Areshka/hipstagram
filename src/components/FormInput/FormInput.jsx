@@ -14,12 +14,15 @@ const FormInput = ({
   reference
 }) => {
 
+  const inputErrorStyle = error ? { borderColor: "rgb(243, 69, 69)" } : null;
+
   return (
     <div className='field-wrap'>
-      <label htmlFor={name}>{label} </label>
+      {label && <label htmlFor={name}>{label} </label>}
       <input
+        style={inputErrorStyle}
         id={name}
-        className={error ? `${className} ${className}--error` : className}
+        className={className}
         type={type}
         name={name}
         placeholder={placeholder}
