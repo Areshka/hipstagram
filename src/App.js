@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 
 import Auth from './containers/Auth';
-import Header from './components/Header';
+import Users from './components/Users';
 
 import './App.scss';
 
@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Auth />
       </Router>
-      <Header />
+      <Users />
     </div>
   );
 }
