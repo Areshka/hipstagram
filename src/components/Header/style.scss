@@ -1,0 +1,45 @@
+.main-header {
+  padding: 15px 0;
+  background-color: #4d88ed;
+  color: #fff;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.user-bl {  
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin-left: 20px;
+    display: inline-block;
+  }
+}
+
+.bnt-logout {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+
+
+#logout {  
+  path {
+    transition: fill .2s linear, transform .1s linear;
+  }
+
+  &:hover path {
+    fill: #bed2f5;    
+  }
+
+  &:active path{
+    transform: scale(.95);    
+  }
+}
