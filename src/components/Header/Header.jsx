@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Wrapper from '../Wrapper';
+import { Wrapper } from '../Wrapper/Wrapper';
 import FormInput from '../FormInput';
 
 import { ReactComponent as IconUser } from '../../images/icon_user.svg';

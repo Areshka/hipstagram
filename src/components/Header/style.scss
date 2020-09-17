@@ -1,4 +1,9 @@
 .main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
   padding: 16px 0 12px;
   background-color: #4d88ed;
   color: #fff;
@@ -69,6 +74,10 @@
   border: none;
   outline: none;
   cursor: pointer;
+
+  &:active path {
+    transform: scale(.95, .95);
+  }
 }
 
 #logout {
@@ -78,10 +87,6 @@
 
   &:hover path {
     fill: #bed2f5;
-  }
-
-  &:active path {
-    transform: scale(.95);
   }
 }
 
@@ -98,6 +103,10 @@
     width: 33.3333%;
     margin-top: 0;
     text-align: left;
+
+    .field-wrap {
+      margin: 0;  
+    }
   }
 
   .user-bl {
