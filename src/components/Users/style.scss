@@ -1,0 +1,42 @@
+.not-users {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: -130px -15px -50px;
+  background: #f2f2f2;
+
+  svg {
+    width: 200px;
+    height: 195px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.667rem;
+    font-weight: bold;
+    color: #2db6f0;
+    text-align: center;
+  }
+}
+
+@media (min-width: 576px) {
+  .not-users {
+    margin-top: -80px;
+  }
+}
+
+@media (min-width: 768px) {
+  .not-users {   
+  
+    svg {
+      width: 256px;
+      height: 249px;
+    }
+  
+    p {      
+      font-size: 2.667rem;      
+    }
+  }
+}
