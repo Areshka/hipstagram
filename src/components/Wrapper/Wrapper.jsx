@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-const Wrapper = ({ children }) => {
+export const Wrapper = ({ children }) => {
   return (
     <div className='container'>
       {children}
@@ -9,4 +9,12 @@ const Wrapper = ({ children }) => {
   );
 }
 
-export default Wrapper
+export const WrapperContent = ({ children }) => {
+  return (
+    <main id='main'>
+      <div className='wrapper-content'>
+        {children}
+      </div>
+    </main>
+  );
+}
