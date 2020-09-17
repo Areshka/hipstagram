@@ -21,4 +21,16 @@
   &:active {
     background-color: #76a4f5;
   }
+
+  &--danger {
+    background-color: #fe7171;
+
+    &:hover {
+      background-color: #fc4040;
+    }
+  
+    &:active {
+      background-color: #f58c8c;
+    }
+  }
 }
