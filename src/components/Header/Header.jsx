@@ -8,18 +8,23 @@ import { ReactComponent as IconLogout } from '../../images/icon_logout.svg';
 import './style.scss';
 
 const Header = () => {
+  console.log(window.location.pathname)
   return (
     <header className="main-header">
       <Wrapper>
         <div className="main-header__inner">
-          <form className='form-search' onSubmit={e => e.preventDefault()}>
-            <FormInput
-              className="field-wrap__input search-input"
-              type="serch"
-              name="serch"
-              placeholder="Enter login"
-            />
-          </form>
+          {window.location.pathname === '/users' ?
+            <form className='form-search' onSubmit={e => e.preventDefault()}>
+              <FormInput
+                className="field-wrap__input search-input"
+                type="serch"
+                name="serch"
+                placeholder="Enter login"
+              />
+            </form>
+            : null
+          }
+          
           <div className="main-header__title">
             Finded 3 users
           </div>
