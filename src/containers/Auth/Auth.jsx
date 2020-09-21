@@ -5,22 +5,26 @@ import Logo from '../../components/Logo';
 import Login from '../../components/Login';
 import Registration from '../../components/Registration';
 
-import './style.scss'
+import {
+  AuthWrapper,
+  AuthWrapperImgBlock,
+  AuthBlock
+} from './styled.js';
 
 const Auth = () => {
 
   return (
-    <section className='auth-wrapper'>
-      <div className="auth-img"></div>
-      <div className="auth">
+    <AuthWrapper>
+      <AuthWrapperImgBlock></AuthWrapperImgBlock>
+      <AuthBlock>
         <Logo />
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/registration" component={Registration} />
           <Redirect to="/login" />
         </Switch>
-      </div>
-    </section>
+      </AuthBlock>
+    </AuthWrapper>
   )
 }
 
