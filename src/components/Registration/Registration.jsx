@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 
-import Button from '../Button';
+import { Button } from '../Button/Button';
 import FormInput from '../FormInput';
 
 import {
@@ -10,6 +10,14 @@ import {
   emailValidationData,
   passwordValidationData
 } from '../../constants/formPatterns';
+
+import {
+  FormAuth,
+  FormAuthTitle,
+  AuthLink
+} from '../../containers/Auth/styled';
+import FieldWrapper from '../FieldWrapper';
+
 
 const Registration = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -20,42 +28,40 @@ const Registration = () => {
 
   return (
     <>
-      <form className="form-auth" onSubmit={handleSubmit(onSubmit)}>
-        <h3 className="form-auth__title">Sing Up</h3>
-        <FormInput
-          label="Login"
-          className="field-wrap__input"
-          type="text"
-          name="login"
-          placeholder="Enter your login"
-          error={errors.login}
-          reference={register(loginValidationData)}
-        />
-        <FormInput
-          label="Email"
-          className="field-wrap__input"
-          type="email"
-          name="email"
-          placeholder="Enter your Email"
-          reference={register(emailValidationData)}
-          error={errors.email}
-        />
-        <FormInput
-          label="Password"
-          className="field-wrap__input"
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-          reference={register(passwordValidationData)}
-          error={errors.password}
-        />
-        <div className="btn-wrapper">
-          <Button className="btn" type="submit" title="Sing Up" />
-        </div>
-      </form>
-      <p className="auth-link">
+      <FormAuth onSubmit={handleSubmit(onSubmit)}>
+        <FormAuthTitle>Sing Up</FormAuthTitle>
+        <FieldWrapper label="Login" error={errors.login}>
+          <FormInput
+            type="text"
+            name="login"
+            placeholder="Enter your login"
+            invalid={'login' in errors}
+            ref={register(loginValidationData)}
+          />
+        </FieldWrapper>
+        <FieldWrapper label="Email" error={errors.email}>
+          <FormInput
+            type="email"
+            name="email"
+            placeholder="Enter your Email"
+            invalid={'email' in errors}
+            ref={register(emailValidationData)}
+          />
+        </FieldWrapper>
+        <FieldWrapper mb label="Password" error={errors.password}>
+          <FormInput
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            invalid={'password' in errors}
+            ref={register(passwordValidationData)}
+          />
+        </FieldWrapper>
+        <Button type="submit" title="Sing Up" />
+      </FormAuth>
+      <AuthLink>
         If you have account you can <Link to="/login" >Login</Link>
-      </p>
+      </AuthLink>
     </>
   );
 }
