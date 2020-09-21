@@ -1,20 +1,26 @@
 import React from 'react';
 
-import './style.scss'
+import { StyledButton, StyledFollowButton } from './styled'
 
-const Button = ({
-  className,
-  type,
-  handleClick,
-  title,
-}) => (
-    <button
+export const Button = ({ type, handleClick, title, }) => {
+  return (
+    <StyledButton
       type={type}
-      className={className}
-      onClick={handleClick}
+      onClick={() => handleClick && handleClick()}
     >
       {title}
-    </button>
-  )
+    </StyledButton>
+  );
+}
 
-export default Button;
+export const FollowButton = ({ type, handleClick, title, isFollow }) => {
+  return (
+    <StyledFollowButton
+      isFollow={isFollow}
+      type={type}
+      onClick={() => handleClick && handleClick()}
+    >
+      {title}
+    </StyledFollowButton>
+  )
+}
