@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Button from '../../Button';
+import { FollowButton } from '../../Button/Button';
 import UserAvatar from '../../../images/user_alexa.png';
 
 import './style.scss';
@@ -22,8 +22,8 @@ const User = () => {
         </div>
         <h3 className="user__name">alexa_blie</h3>
       </div>
-      <Button
-        className={isFollow ? "btn btn-follow btn--danger" : "btn btn-follow"}
+      <FollowButton
+        isFollow={isFollow}
         title={isFollow ? "UnFollow" : "Follow"}
         handleClick={handleClick}
       />
