@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { device } from '../../constants/breakpoint';
-import Button from '../Button'
+import { Button } from '../Button/Button'
 
 export const ProfileAccount = styled.div`
   margin-bottom: 40px;
@@ -53,20 +53,6 @@ export const ProfileNumbers = styled.p`
 
   @media ${device.mobileM} {
     margin-bottom: 0;  
-  }
-`;
-
-export const StyledButton = styled(Button)`
-  width: 100%;
-  margin-bottom: 15px;
-
-  @media ${device.mobileM} {
-    margin-bottom: 0;
-    font-size: 1.1rem;
-  }
-
-  @media ${device.tablet} {   
-    font-size: 1.333rem;
   }
 `;
 

@@ -6,9 +6,9 @@ import {
   ProfileAvatar,
   ProfileInfo,
   ProfileNumbers,
-  StyledButton,
   ProfileText
 } from './styled'
+import { FollowButton } from '../Button/Button';
 import { WrapperContent } from '../Wrapper/Wrapper';
 
 import ProfileAvatarImg from '../../images/profile-avatar.png';
@@ -34,7 +34,7 @@ const Profile = () => {
               <span><strong>300</strong> folowers</span>
               <span><strong>300</strong> folowings</span>
             </ProfileNumbers>
-            <StyledButton type="button" title="Follow" className='btn btn-follow' />
+            <FollowButton profile='true' type="button" title="Follow" />
             <ProfileText>
               Not 23, not designer, not from California
             </ProfileText>
