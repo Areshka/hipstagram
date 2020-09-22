@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { ReactComponent as LogoImg } from '../../images/logo.svg';
-import './style.scss';
+import { StyledLogo, StyledLogoTitle } from './styled';
 
 const Logo = () => {
   return (
-    <h1 className="logo">
-      <LogoImg className="logo__img" />
-      <span className="logo__title">hipstagram</span>
-    </h1>
+    <StyledLogo>
+      <LogoImg />
+      <StyledLogoTitle>hipstagram</StyledLogoTitle>
+    </StyledLogo>
   );
 }
 
