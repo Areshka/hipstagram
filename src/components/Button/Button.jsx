@@ -13,14 +13,15 @@ export const Button = ({ type, handleClick, title, }) => {
   );
 }
 
-export const FollowButton = ({ type, handleClick, title, isFollow }) => {
+export const FollowButton = ({ type, handleClick, title, isFollow, ...props }) => {
   return (
     <StyledFollowButton
+      {...props}
       isFollow={isFollow}
       type={type}
       onClick={() => handleClick && handleClick()}
     >
-      {title}
-    </StyledFollowButton>
+      { title}
+    </StyledFollowButton >
   )
 }
