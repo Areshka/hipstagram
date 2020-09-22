@@ -15,8 +15,7 @@ const Header = () => {
         <div className="main-header__inner">
           {window.location.pathname === '/users' ?
             <form className='form-search' onSubmit={e => e.preventDefault()}>
-              <FormInput
-                className="field-wrap__input search-input"
+              <FormInput                
                 type="serch"
                 name="serch"
                 placeholder="Enter login"
