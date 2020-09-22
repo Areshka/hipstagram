@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 
 import { FollowButton } from '../../Button/Button';
-import UserAvatar from '../../../images/user_alexa.png';
+import UserAvatarImg from '../../../images/user_alexa.png';
 
-import './style.scss';
+import {
+  UserInfo,
+  UserItem,
+  UserAvatar,
+  UserName
+} from './styled';
 
 const User = () => {
   const [isFollow, setIsFollow] = useState(false);
@@ -15,19 +20,19 @@ const User = () => {
   console.log(isFollow);
 
   return (
-    <article className="user__item">
-      <div className="user__info">
-        <div className="user__avatar">
-          <img src={UserAvatar} alt="" />
-        </div>
-        <h3 className="user__name">alexa_blie</h3>
-      </div>
+    <UserItem>
+      <UserInfo>
+        <UserAvatar>
+          <img src={UserAvatarImg} alt="" />
+        </UserAvatar>
+        <UserName>alexa_blue</UserName>
+      </UserInfo>
       <FollowButton
         isFollow={isFollow}
         title={isFollow ? "UnFollow" : "Follow"}
         handleClick={handleClick}
       />
-    </article>
+    </UserItem>
   )
 }
 
