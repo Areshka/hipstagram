@@ -1,20 +1,21 @@
 import React from 'react';
-import './style.scss';
+
+import { Container, StyledWrapperContent } from './styled';
 
 export const Wrapper = ({ children }) => {
   return (
-    <div className='container'>
+    <Container>
       {children}
-    </div>
+    </Container>
   );
 }
 
 export const WrapperContent = ({ children }) => {
   return (
     <main id='main'>
-      <div className='wrapper-content'>
+      <StyledWrapperContent>
         {children}
-      </div>
+      </StyledWrapperContent>
     </main>
   );
 }
