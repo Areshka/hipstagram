@@ -1,4 +1,7 @@
-.not-users {
+import styled from 'styled-components';
+import { device } from '../../constants/breakpoint';
+
+export const NoUsersBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,17 +22,12 @@
     color: #2db6f0;
     text-align: center;
   }
-}
 
-@media (min-width: 576px) {
-  .not-users {
+  @media ${device.mobileM} {
     margin-top: -100px;
   }
-}
 
-@media (min-width: 768px) {
-  .not-users {   
-  
+  @media ${device.tablet} {
     svg {
       width: 256px;
       height: 249px;
@@ -39,4 +37,4 @@
       font-size: 2.667rem;      
     }
   }
-}
+`;

@@ -3,9 +3,9 @@ import React from 'react';
 import User from './User';
 import Header from '../Header';
 import { WrapperContent } from '../Wrapper/Wrapper'
-import { ReactComponent as UsersNotFound } from '../../images/icon_not_user.svg'
+import { ReactComponent as UsersNotFoundImg } from '../../images/icon_not_user.svg'
 
-import './style.scss';
+import { NoUsersBlock } from './styled'
 
 const Users = () => {
   const users = [
@@ -25,10 +25,10 @@ const Users = () => {
             <User />
           </div>
           :
-          <div className='not-users'>
-            <UsersNotFound />
+          <NoUsersBlock>
+            <UsersNotFoundImg />
             <p>Users not found</p>
-          </div>
+          </NoUsersBlock>
         }
       </WrapperContent>
     </>
