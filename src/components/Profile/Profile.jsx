@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Header from '../Header';
 import {
   ProfileAccount,
   ProfileAvatar,
@@ -21,35 +20,32 @@ import ProfileImg6 from '../../images/profile-image-6.jpg';
 
 const Profile = () => {
   return (
-    <>
-      <Header />
-      <WrapperContent>
-        <ProfileAccount>
-          <ProfileAvatar>
-            <img src={ProfileAvatarImg} alt="" />
-          </ProfileAvatar>
-          <ProfileInfo>
-            <ProfileNumbers>
-              <span><strong>2</strong> posts</span>
-              <span><strong>300</strong> folowers</span>
-              <span><strong>300</strong> folowings</span>
-            </ProfileNumbers>
-            <FollowButton profile='true' type="button" title="Follow" />
-            <ProfileText>
-              Not 23, not designer, not from California
+    <WrapperContent>
+      <ProfileAccount>
+        <ProfileAvatar>
+          <img src={ProfileAvatarImg} alt="" />
+        </ProfileAvatar>
+        <ProfileInfo>
+          <ProfileNumbers>
+            <span><strong>2</strong> posts</span>
+            <span><strong>300</strong> folowers</span>
+            <span><strong>300</strong> folowings</span>
+          </ProfileNumbers>
+          <FollowButton profile='true' type="button" title="Follow" />
+          <ProfileText>
+            Not 23, not designer, not from California
             </ProfileText>
-          </ProfileInfo>
-        </ProfileAccount>
-        <div>
-          <img src={ProfileImg1} alt="" />
-          <img src={ProfileImg2} alt="" />
-          <img src={ProfileImg3} alt="" />
-          <img src={ProfileImg4} alt="" />
-          <img src={ProfileImg5} alt="" />
-          <img src={ProfileImg6} alt="" />
-        </div>
-      </WrapperContent>
-    </>
+        </ProfileInfo>
+      </ProfileAccount>
+      <div>
+        <img src={ProfileImg1} alt="" />
+        <img src={ProfileImg2} alt="" />
+        <img src={ProfileImg3} alt="" />
+        <img src={ProfileImg4} alt="" />
+        <img src={ProfileImg5} alt="" />
+        <img src={ProfileImg6} alt="" />
+      </div>
+    </WrapperContent>
   );
 }
 
