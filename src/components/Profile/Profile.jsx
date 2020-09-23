@@ -6,7 +6,9 @@ import {
   ProfileAvatar,
   ProfileInfo,
   ProfileNumbers,
-  ProfileText
+  ProfileText,
+  Posts,
+  PostsItem
 } from './styled'
 import { FollowButton } from '../Button/Button';
 import { WrapperContent } from '../Wrapper/Wrapper';
@@ -19,6 +21,8 @@ import ProfileImg3 from '../../images/profile-image-3.jpg';
 import ProfileImg4 from '../../images/profile-image-4.jpg';
 import ProfileImg5 from '../../images/profile-image-5.jpg';
 import ProfileImg6 from '../../images/profile-image-6.jpg';
+
+const Images = [ProfileImg1, ProfileImg2, ProfileImg3, ProfileImg4, ProfileImg5, ProfileImg6];
 
 const Profile = () => {
   const dispatch = useDispatch()
@@ -45,14 +49,16 @@ const Profile = () => {
           </ProfileText>
         </ProfileInfo>
       </ProfileAccount>
-      <div>
-        <img src={ProfileImg1} alt="" onClick={openModal} />
-        <img src={ProfileImg2} alt="" />
-        <img src={ProfileImg3} alt="" />
-        <img src={ProfileImg4} alt="" />
-        <img src={ProfileImg5} alt="" />
-        <img src={ProfileImg6} alt="" />
-      </div>
+      <Posts>
+        {
+          Images.map(
+            (img, i) =>
+              <PostsItem key={'img' + i}>
+                <img src={img} alt="" onClick={openModal} />
+              </PostsItem>
+          )
+        }
+      </Posts>
     </WrapperContent>
   );
 }

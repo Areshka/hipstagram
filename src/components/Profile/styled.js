@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { device } from '../../constants/breakpoint';
-import { Button } from '../Button/Button'
 
 export const ProfileAccount = styled.div`
   margin-bottom: 40px;
@@ -66,5 +65,37 @@ export const ProfileText = styled.p`
 
   @media ${device.tablet} {   
     font-size: 1rem;
+  }
+`;
+
+export const Posts = styled.div`
+  display: flex;
+  flex-wrap: wrap;   
+  margin-left: -5px;
+  margin-right: -5px;
+
+  @media ${device.mobileM} { 
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+`;
+
+export const PostsItem = styled.div`  
+  width: 50%;   
+  margin-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;  
+
+  @media ${device.mobileM} {
+    width: 33.33333%;    
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    cursor: pointer;  
   }
 `;
