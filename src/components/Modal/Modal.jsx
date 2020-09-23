@@ -8,14 +8,14 @@ const Modal = ({ message }) => {
   const dispatch = useDispatch()
 
   const closeModal = (e) => {
-    console.dir(e.target)
-    if (e.target.classList.contains("gsXgVk")) {
+    // console.dir(e.target.getAttribute("id"))
+    if (e.target.getAttribute("id") === "modal") {
       dispatch(hideModal())
     }
   }
 
   return (
-    <StyledModal onClick={closeModal}>
+    <StyledModal id='modal' onClick={closeModal}>
       <StyledModalContent>
         <div className="modal-header">
           <StyledModalClose onClick={() => dispatch(hideModal())}>
