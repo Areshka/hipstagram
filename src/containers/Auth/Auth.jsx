@@ -1,9 +1,7 @@
 import React from 'react';
-import { Switch, Route, Redirect } from "react-router-dom";
 
+import AuthRouter from './AuthRouter';
 import Logo from '../../components/Logo';
-import Login from '../../components/Login';
-import Registration from '../../components/Registration';
 
 import {
   AuthWrapper,
@@ -18,11 +16,7 @@ const Auth = () => {
       <AuthWrapperImgBlock></AuthWrapperImgBlock>
       <AuthBlock>
         <Logo />
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/registration" component={Registration} />
-          <Redirect to="/login" />
-        </Switch>
+        <AuthRouter />
       </AuthBlock>
     </AuthWrapper>
   )
