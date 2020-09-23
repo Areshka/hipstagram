@@ -8,14 +8,14 @@ import {
 import Users from '../../components/Users';
 import Profile from '../../components/Profile';
 
-const ApplicationRouter = () => {
+const NotAuthRouter = () => {
   return (
     <Switch>
       <Route path='/users' component={Users} />
       <Route path='/profile' component={Profile} />
-      <Redirect to='/users' />
+      <Redirect to='/profile' />
     </Switch>
   );
 }
 
-export default ApplicationRouter;
+export default NotAuthRouter;

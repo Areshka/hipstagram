@@ -1,22 +1,22 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import Auth from '../Auth/Auth';
-import NotAuth from '../NotAuth/NotAuth';
 import Modal from '../../components/Modal';
+import Header from '../../components/Header';
+import NotAuthRouter from './NotAuthRouter';
 
 import { isOpenModalStateSelector } from '../../store/modal/selectors'
 
-const Application = () => {
+const NotAuth = () => {
   const isOpen = useSelector(isOpenModalStateSelector);
-  const isAuth = true;
 
   return (
     <>
-      {isAuth ? <NotAuth /> : <Auth />}
+      <Header />
+      <NotAuthRouter />
       {isOpen && <Modal message="ASdfghjj" />}
     </>
   );
 }
 
-export default Application;
+export default NotAuth;
