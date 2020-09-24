@@ -54,6 +54,10 @@ export const UserBlock = styled.ul `
   text-align: right;
   line-height: .7;
 
+  @media ${device.mobileM} {
+    margin-left: auto;
+  }
+
   li {
     margin-left: 20px;
     
