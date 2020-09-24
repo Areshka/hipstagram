@@ -1,10 +1,14 @@
+import { useHistory } from 'react-router-dom';
 import { loginFetch, registrationFetch } from '../../api/auth.service';
 import { loginAction, logoutAction } from './actions';
 
 export const registrationThunk = (userData) => {
   return async () => {
     try {
-      await registrationFetch(userData)
+      await registrationFetch(userData);
+      let history = useHistory();
+      history.push('/login');
+      console.log('Registration successful');
     } catch (error) {
       if (error.response) {
         console.log(error.response.data);

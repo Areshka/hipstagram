@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
 
-import { Button } from '../Button/Button';
+import { registrationThunk } from '../../store/auth/thunks';
+
 import FormInput from '../FormInput';
+import { Button } from '../Button/Button';
+import FieldWrapper from '../FieldWrapper';
 
 import {
   loginValidationData,
@@ -16,14 +20,17 @@ import {
   FormAuthTitle,
   AuthLink
 } from '../../containers/Auth/styled';
-import FieldWrapper from '../FieldWrapper';
-
 
 const Registration = () => {
+  const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = ({ login, email, password }) => {
-    console.log(login, email, password)
+    dispatch(registrationThunk({
+      login,
+      email,
+      password
+    }))
   }
 
   return (
@@ -57,7 +64,7 @@ const Registration = () => {
             ref={register(passwordValidationData)}
           />
         </FieldWrapper>
-        <Button type="submit" title="Sing Up" />
+        <Button title="Sing Up" />
       </FormAuth>
       <AuthLink>
         If you have account you can <Link to="/login" >Login</Link>
