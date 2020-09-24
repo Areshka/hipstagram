@@ -2,32 +2,39 @@ import React from 'react';
 
 import { Wrapper } from '../Wrapper/Wrapper';
 import FormInput from '../FormInput';
+import {
+  MainHeader,
+  MainHeaderInner,
+  FormSearch,
+  MainHeaderTitle,
+  UserBlock
+} from './styled';
 
 import { ReactComponent as IconUser } from '../../images/icon_user.svg';
 import { ReactComponent as IconLogout } from '../../images/icon_logout.svg';
-import './style.scss';
 
 const Header = () => {
   console.log(window.location.pathname)
   return (
-    <header className="main-header">
+    <MainHeader>
       <Wrapper>
-        <div className="main-header__inner">
+        <MainHeaderInner>
           {window.location.pathname === '/users' ?
-            <form className='form-search' onSubmit={e => e.preventDefault()}>
-              <FormInput                
-                type="serch"
-                name="serch"
-                placeholder="Enter login"
+            <FormSearch onSubmit={e => e.preventDefault()}>
+              <FormInput
+                search
+                type="search"
+                name="search"
+                placeholder="Enter search login"
               />
-            </form>
+            </FormSearch>
             : null
           }
-          
-          <div className="main-header__title">
+
+          <MainHeaderTitle>
             Finded 3 users
-          </div>
-          <ul className="user-bl">
+          </MainHeaderTitle>
+          <UserBlock>
             <li><IconUser /></li>
             <li>
               <button
@@ -37,10 +44,10 @@ const Header = () => {
                 <IconLogout id="logout" />
               </button>
             </li>
-          </ul>
-        </div>
+          </UserBlock>
+        </MainHeaderInner>
       </Wrapper>
-    </header>
+    </MainHeader>
   );
 }
 
