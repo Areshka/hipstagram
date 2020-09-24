@@ -5,11 +5,12 @@ import Auth from '../Auth/Auth';
 import NotAuth from '../NotAuth/NotAuth';
 import Modal from '../../components/Modal';
 
+import { getAuthStatusSelector } from '../../store/auth/selectors';
 import { isOpenModalStateSelector } from '../../store/modal/selectors'
 
 const Application = () => {
   const isOpen = useSelector(isOpenModalStateSelector);
-  const isAuth = true;
+  const isAuth = useSelector(getAuthStatusSelector);
 
   return (
     <>

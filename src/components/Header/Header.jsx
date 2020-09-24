@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { logoutThunk } from '../../store/auth/thunks';
 
 import { Wrapper } from '../Wrapper/Wrapper';
 import FormInput from '../FormInput';
@@ -14,7 +16,8 @@ import { ReactComponent as IconUser } from '../../images/icon_user.svg';
 import { ReactComponent as IconLogout } from '../../images/icon_logout.svg';
 
 const Header = () => {
-  console.log(window.location.pathname)
+  const dispatch = useDispatch();
+
   return (
     <MainHeader>
       <Wrapper>
@@ -37,10 +40,7 @@ const Header = () => {
           <UserBlock>
             <li><IconUser /></li>
             <li>
-              <button
-                className="bnt-logout"
-                onClick={() => { console.log("Logout") }}
-              >
+              <button onClick={() => { dispatch(logoutThunk()) }}>
                 <IconLogout id="logout" />
               </button>
             </li>

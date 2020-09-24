@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
 
 import { Button } from '../Button/Button';
 import FormInput from '../FormInput';
@@ -8,12 +9,19 @@ import FormInput from '../FormInput';
 import { loginValidationData, passwordValidationData } from '../../constants/formPatterns';
 import { FormAuth, FormAuthTitle, AuthLink } from '../../containers/Auth/styled';
 import FieldWrapper from '../FieldWrapper';
+import { loginThunk } from '../../store/auth/thunks';
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = ({ login, password }) => {
     console.log(login, password)
+    dispatch(loginThunk({
+      login,
+      password
+    }))
   }
 
   return (
