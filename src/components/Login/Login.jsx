@@ -16,8 +16,7 @@ const Login = () => {
 
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = ({ login, password }) => {
-    console.log(login, password)
+  const onSubmit = ({ login, password }) => {    
     dispatch(loginThunk({
       login,
       password
