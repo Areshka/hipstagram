@@ -6,6 +6,6 @@ export const loginFetch = async userData => {
 }
 
 export const registrationFetch = async userData => {
-  const {data} = await axios.post('/auth/reg', userData);
+  const {data} = await axios.post('/auth/registration', userData);
   return data;
 }
