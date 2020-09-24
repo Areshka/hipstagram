@@ -1,11 +1,33 @@
-import { loginFetch } from '../../api/auth.service';
+import { loginFetch, registrationFetch } from '../../api/auth.service';
 import { loginAction, logoutAction } from './actions';
+
+export const registrationThunk = (userData) => {
+  return async () => {
+    try {
+      await registrationFetch(userData)
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+      }
+    }
+  }
+}
 
 export const loginThunk = (userData) => {
   return async (dispatch) => {
-    const { access_token } = await loginFetch(userData);
-    localStorage.setItem('access_token', access_token);
-    dispatch(loginAction(access_token))
+    try {
+      const { access_token } = await loginFetch(userData);
+      localStorage.setItem('access_token', access_token);
+      dispatch(loginAction(access_token))
+      console.log("Username or password is correct")
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+      }
+    }
+
   }
 }
 
