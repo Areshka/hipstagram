@@ -2,29 +2,45 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import { Button } from '../Button/Button';
+import { ToastContainer, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { loginThunk } from '../../store/auth/thunks';
+
 import FormInput from '../FormInput';
+import { Button } from '../Button/Button';
+import FieldWrapper from '../FieldWrapper';
 
 import { loginValidationData, passwordValidationData } from '../../constants/formPatterns';
 import { FormAuth, FormAuthTitle, AuthLink } from '../../containers/Auth/styled';
-import FieldWrapper from '../FieldWrapper';
-import { loginThunk } from '../../store/auth/thunks';
 
 const Login = () => {
   const dispatch = useDispatch();
+  let history = useHistory();
+  console.log(history)
 
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = ({ login, password }) => {    
+  const onSubmit = ({ login, password }) => {
     dispatch(loginThunk({
       login,
       password
     }))
+
+    history.location.pathname = '/users';
+    history.push('/users')
   }
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        transition={Slide}
+      />
       <FormAuth onSubmit={handleSubmit(onSubmit)}>
         <FormAuthTitle>Sing In</FormAuthTitle>
         <FieldWrapper label="Login" error={errors.login || ''}>

@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 
+import { ToastContainer, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { registrationThunk } from '../../store/auth/thunks';
 
 import FormInput from '../FormInput';
@@ -35,6 +38,12 @@ const Registration = () => {
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        transition={Slide}
+      />
       <FormAuth onSubmit={handleSubmit(onSubmit)}>
         <FormAuthTitle>Sing Up</FormAuthTitle>
         <FieldWrapper label="Login" error={errors.login}>
