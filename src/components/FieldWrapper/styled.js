@@ -12,6 +12,14 @@ export const FieldWrap = styled.div`
     margin-left: 15px;
     font-size: .78rem;
   }
+
+  &.default {
+    display: flex;
+    max-width: 100%;
+    label {
+      display: inline-block;
+    }
+  }
 `;
 
 export const ErrorMessage = styled.p`
