@@ -7,12 +7,10 @@ export const registrationThunk = (userData) => {
     try {
       await registrationFetch(userData);
       console.log('Registration successful');
+      localStorage.setItem('reg', 'success');
+      toast.success('Registration success');
     } catch (error) {
-      if (error.response) {
-        toast.error(error.response.data);
-        // console.log(error.response.data);
-        // console.log(error.response.status);
-      }
+
     }
   }
 }
@@ -22,14 +20,9 @@ export const loginThunk = (userData) => {
     try {
       const { access_token } = await loginFetch(userData);
       localStorage.setItem('access_token', access_token);
-      dispatch(loginAction(access_token))      
+      dispatch(loginAction(access_token))
       console.log("Username or password is correct")
     } catch (error) {
-      if (error.response) {
-        toast.error(error.response.data);
-        // console.log(error.response.data);
-        // console.log(error.response.status);
-      }
     }
 
   }
