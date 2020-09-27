@@ -6,10 +6,10 @@ const FieldWrapper = ({
   label,
   children,
   error,
-  mb
+  ...props
 }) => {
   return (
-    <FieldWrap mb={mb}>
+    <FieldWrap {...props}>
       {label && <label>{label}</label>}
       {children}
       {error && <ErrorMessage>{error.message || "Invalid field"}</ErrorMessage>}
