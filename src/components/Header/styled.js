@@ -82,6 +82,7 @@ export const UserBlock = styled.ul`
       transition: all .6s linear;
 
       path {
+        fill: #fff;
         transition: fill .2s linear;
       }
     } 

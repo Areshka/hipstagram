@@ -27,7 +27,8 @@ const Header = () => {
           {window.location.pathname === '/users' ?
             <FormSearch onSubmit={e => e.preventDefault()}>
               <FormInput
-                search
+                primary
+                className="search"
                 type="search"
                 name="search"
                 placeholder="Enter search login"
