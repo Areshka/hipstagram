@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,9 +17,6 @@ import { FormAuth, FormAuthTitle, AuthLink } from '../../containers/Auth/styled'
 
 const Login = () => {
   const dispatch = useDispatch();
-  let history = useHistory();
-  console.log(history)
-
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = ({ login, password }) => {
@@ -28,9 +24,6 @@ const Login = () => {
       login,
       password
     }))
-
-    history.location.pathname = '/users';
-    history.push('/users')
   }
 
   return (
