@@ -14,13 +14,13 @@ import { FollowButton } from '../Button/Button';
 import { WrapperContent } from '../Wrapper/Wrapper';
 import { showModal } from '../../store/modal/actions';
 
-import ProfileAvatarImg from '../../images/profile-avatar.png';
-import ProfileImg1 from '../../images/profile-image-1.jpg';
-import ProfileImg2 from '../../images/profile-image-2.jpg';
-import ProfileImg3 from '../../images/profile-image-3.jpg';
-import ProfileImg4 from '../../images/profile-image-4.jpg';
-import ProfileImg5 from '../../images/profile-image-5.jpg';
-import ProfileImg6 from '../../images/profile-image-6.jpg';
+import ProfileAvatarImg from '../../assets/images/profile-avatar.png';
+import ProfileImg1 from '../../assets/images/profile-image-1.jpg';
+import ProfileImg2 from '../../assets/images/profile-image-2.jpg';
+import ProfileImg3 from '../../assets/images/profile-image-3.jpg';
+import ProfileImg4 from '../../assets/images/profile-image-4.jpg';
+import ProfileImg5 from '../../assets/images/profile-image-5.jpg';
+import ProfileImg6 from '../../assets/images/profile-image-6.jpg';
 
 const Images = [ProfileImg1, ProfileImg2, ProfileImg3, ProfileImg4, ProfileImg5, ProfileImg6];
 

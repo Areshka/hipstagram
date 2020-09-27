@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../constants/breakpoint';
-import wpapFinal from '../../images/wpap_final.jpg';
+import wpapFinal from '../../assets/images/wpap_final.jpg';
 
 export const AuthWrapper = styled.section`
   width: 100%;

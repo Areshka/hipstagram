@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { FollowButton } from '../../Button/Button';
-import UserAvatarImg from '../../../images/user_alexa.png';
+import UserAvatarImg from '../../../assets/images/user_alexa.png';
 
 import {
   UserInfo,

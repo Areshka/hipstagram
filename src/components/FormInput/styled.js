@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import searchIcon from '../../images/icon_search.svg'
+import searchIcon from '../../assets/images/icons/icon_search.svg'
 
 const searchStyled = {
   marginBottom: '0',

@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import {
-  device
-} from '../../constants/breakpoint';
+import { device } from '../../constants/breakpoint';
 
-export const MainHeader = styled.header `
+export const MainHeader = styled.header`
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +12,7 @@ export const MainHeader = styled.header `
   color: #fff;
 `;
 
-export const MainHeaderInner = styled.div `
+export const MainHeaderInner = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -22,7 +20,7 @@ export const MainHeaderInner = styled.div `
   flex-wrap: wrap;
 `;
 
-export const FormSearch = styled.form `
+export const FormSearch = styled.form`
   order: 1;
   width: 100%;
   margin-top: 15px;
@@ -37,7 +35,7 @@ export const FormSearch = styled.form `
   }
 `;
 
-export const MainHeaderTitle = styled.div `
+export const MainHeaderTitle = styled.div`
     
   @media ${device.mobileM} {
     position: absolute;
@@ -47,7 +45,7 @@ export const MainHeaderTitle = styled.div `
   }
 `;
 
-export const UserBlock = styled.ul `
+export const UserBlock = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;

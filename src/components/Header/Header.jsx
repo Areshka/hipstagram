@@ -12,8 +12,8 @@ import {
   UserBlock
 } from './styled';
 
-import { ReactComponent as IconUser } from '../../images/icon_user.svg';
-import { ReactComponent as IconLogout } from '../../images/icon_logout.svg';
+import { ReactComponent as IconUser } from '../../assets/images/icons/icon_user.svg';
+import { ReactComponent as IconLogout } from '../../assets/images/icons/icon_logout.svg';
 
 const Header = () => {
   const dispatch = useDispatch();
