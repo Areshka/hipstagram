@@ -1,9 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logoutThunk } from '../../store/auth/thunks';
 
-import { Wrapper } from '../Wrapper/Wrapper';
 import FormInput from '../FormInput';
+import { Wrapper } from '../Wrapper/Wrapper';
 import {
   MainHeader,
   MainHeaderInner,
@@ -14,6 +15,7 @@ import {
 
 import { ReactComponent as IconUser } from '../../assets/images/icons/icon_user.svg';
 import { ReactComponent as IconLogout } from '../../assets/images/icons/icon_logout.svg';
+import { ReactComponent as IconSettings } from '../../assets/images/icons/icon-settings.svg';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -38,7 +40,8 @@ const Header = () => {
             Finded 3 users
           </MainHeaderTitle>
           <UserBlock>
-            <li><IconUser /></li>
+            <li><Link to='/settings'><IconSettings /></Link></li>
+            <li><Link to='/profile'><IconUser /></Link></li>
             <li>
               <button onClick={() => { dispatch(logoutThunk()) }}>
                 <IconLogout id="logout" />
