@@ -8,7 +8,7 @@ import modalReducer from './modal/reducer';
 
 const rootReducer = combineReducers({
   modal: modalReducer,
-  auth: authReducer,
+  authentication: authReducer,
 })
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
