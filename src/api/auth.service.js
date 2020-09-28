@@ -1,5 +1,5 @@
 import axios from './axios.instence';
-import { toast } from "react-toastify";
+import { toast, Slide } from "react-toastify";
 
 import store from '../store/store';
 import { logoutThunk } from '../store/auth/thunks';
@@ -19,11 +19,16 @@ axios.interceptors.request.use(
 );
 
 axios.interceptors.response.use(
-  function (response) {    
+  function (response) {
     return response;
   },
   function (error) {
-    toast.error(error.response.data);
+    toast.error(error.response.data, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      transition: Slide,
+    });
     store.dispatch(logoutThunk());
     return Promise.reject(error);
   }

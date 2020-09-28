@@ -1,17 +1,21 @@
 import { loginFetch, registrationFetch } from '../../api/auth.service';
 import { loginAction, logoutAction } from './actions';
-import { toast } from "react-toastify";
+import { toast, Slide } from "react-toastify";
 
-export const registrationThunk = (userData) => {
+export const registrationThunk = (userData, redirectToLogin) => {
   return async () => {
     try {
       await registrationFetch(userData);
-      console.log('Registration successful');
-      localStorage.setItem('reg', 'success');
-      toast.success('Registration success');
-    } catch (error) {
 
-    }
+      toast.success('Registration success', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        transition: Slide,
+      });
+
+      redirectToLogin();
+    } catch (error) { }
   }
 }
 
@@ -21,10 +25,7 @@ export const loginThunk = (userData) => {
       const { access_token } = await loginFetch(userData);
       localStorage.setItem('access_token', access_token);
       dispatch(loginAction(access_token))
-      console.log("Username or password is correct")
-    } catch (error) {
-    }
-
+    } catch (error) {}
   }
 }
 
