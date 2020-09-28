@@ -53,3 +53,15 @@ export const passwordValidationData = {
     message: 'Password can contain large and small latin characters and numbers'
   }
 }
+
+export const nameValidation = {
+  maxLength: {
+    value: 50,
+    message: 'Name must be no more than 50 characters'
+  },
+
+  pattern: {
+    value: /^[a-zA-Z ]+$/,
+    message: 'Name can contain large and small latin characters'
+  }
+}
