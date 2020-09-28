@@ -2,8 +2,9 @@ import ActionTypes from './actionTypes';
 
 const createInitialState = () => {
   return {
-    currentUser: {
-      auth: false,
+    currentUser: {},
+    auth: {
+      authStatus: false,
       access_token: '',
     }
   }
@@ -14,8 +15,8 @@ const authReducer = (state = createInitialState(), action) => {
     case ActionTypes.LOGIN_USER:
       return {
         ...state,
-        currentUser: {
-          auth: true,
+        auth: {
+          authStatus: true,
           access_token: action.payload
         }
       };
@@ -23,9 +24,19 @@ const authReducer = (state = createInitialState(), action) => {
     case ActionTypes.LOGOUT_USER:
       return {
         ...state,
-        currentUser: {
-          auth: false,
+        auth: {
+          authStatus: false,
           access_token: ''
+        }
+      };
+
+    case ActionTypes.GET_CURRENT_USER:
+      return {
+        ...state,
+        currentUser: action.payload,
+        auth: {
+          authStatus: true,
+          access_token: localStorage.getItem('access_token')
         }
       };
 
