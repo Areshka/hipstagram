@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 
+import EditProfile from '../../components/EditProfile';
 import ChangePassword from '../../components/ChangePasswod';
 import { WrapperContent } from '../../components/Wrapper/Wrapper';
 
@@ -14,7 +15,7 @@ const Settings = () => {
         </ul>
         <div>
           <Switch>
-            <Route path='/settings/edit_profile' render={() => <h1>Edit Profile</h1>} />
+            <Route path='/settings/edit_profile' component={EditProfile} />
             <Route path='/settings/change_password' component={ChangePassword} />
             <Redirect to='/settings/edit_profile' />
           </Switch>
