@@ -27,7 +27,10 @@ export const StyledButton = styled.button.attrs({
     background-color: #76a4f5;
   }
 
- 
+  &.btn {
+    padding: 11px 20px;  
+    font-size: .8rem;
+  }
 `;
 
 export const StyledFollowButton = styled(StyledButton).attrs({
