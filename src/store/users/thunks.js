@@ -1,4 +1,5 @@
 import { loginFetch, registrationFetch } from '../../api/auth.service';
+import { updatePasswordFetch } from '../../api/users.service';
 import { getCurrentUserAction, loginAction, logoutAction } from './actions';
 import { toast, Slide } from "react-toastify";
 import { currentUserFetch } from '../../api/users.service';
@@ -44,6 +45,23 @@ export const currentUserThunk = () => {
   }
 }
 
+export const updatePasswordThunk = (passwords) => {
+  return async (dispatch) => {
+    try {
+      await updatePasswordFetch(passwords);
+
+      toast.success('Password changed', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        transition: Slide,
+        onClose: () => dispatch(logoutThunk())
+      });      
+      
+    } catch (error) { }
+  }
+}
+
 export const initThunk = () => {
   return async (dispatch) => {
     try {
@@ -51,7 +69,7 @@ export const initThunk = () => {
       if (!token) {
         return dispatch(logoutThunk())
       }
-      // dispatch(loginAction(token))
+      dispatch(loginAction(token))
       dispatch(currentUserThunk())
     } catch (e) {
 
