@@ -9,6 +9,13 @@ export const loginAction = accessToken => {
 
 export const logoutAction = () => {
   return {
-    type: ActionTypes.LOGOUT_USER, 
+    type: ActionTypes.LOGOUT_USER,
+  }
+}
+
+export const getCurrentUserAction = (currentUser) => {
+  return {
+    type: ActionTypes.GET_CURRENT_USER,
+    payload: currentUser
   }
 }
