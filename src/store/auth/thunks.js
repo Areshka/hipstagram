@@ -1,6 +1,7 @@
 import { loginFetch, registrationFetch } from '../../api/auth.service';
-import { loginAction, logoutAction } from './actions';
+import { getCurrentUserAction, loginAction, logoutAction } from './actions';
 import { toast, Slide } from "react-toastify";
+import { currentUserFetch } from '../../api/users.service';
 
 export const registrationThunk = (userData, redirectToLogin) => {
   return async () => {
@@ -25,7 +26,7 @@ export const loginThunk = (userData) => {
       const { access_token } = await loginFetch(userData);
       localStorage.setItem('access_token', access_token);
       dispatch(loginAction(access_token))
-    } catch (error) {}
+    } catch (error) { }
   }
 }
 
@@ -36,6 +37,13 @@ export const logoutThunk = () => {
   }
 }
 
+export const currentUserThunk = () => {
+  return async (dispatch) => {
+    const currentUser = await currentUserFetch();
+    dispatch(getCurrentUserAction(currentUser))
+  }
+}
+
 export const initThunk = () => {
   return async (dispatch) => {
     try {
@@ -43,7 +51,8 @@ export const initThunk = () => {
       if (!token) {
         return dispatch(logoutThunk())
       }
-      dispatch(loginAction(token))
+      // dispatch(loginAction(token))
+      dispatch(currentUserThunk())
     } catch (e) {
 
     }

@@ -1,3 +1,3 @@
-export const authStateSelector = state => state.auth;
-export const getCurrentUserSelector = state => authStateSelector(state).currentUser;
-export const getAuthStatusSelector = state => getCurrentUserSelector(state).auth;
+export const authStateSelector = state => state.authentication;
+export const getAuthSelector = state => authStateSelector(state).auth;
+export const getAuthStatusSelector = state => getAuthSelector(state).authStatus;
