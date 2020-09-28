@@ -2,7 +2,7 @@ import axios from './axios.instence';
 import { toast, Slide } from "react-toastify";
 
 import store from '../store/store';
-import { logoutThunk } from '../store/auth/thunks';
+import { logoutThunk } from '../store/users/thunks';
 
 axios.interceptors.request.use(
   function (config) {
