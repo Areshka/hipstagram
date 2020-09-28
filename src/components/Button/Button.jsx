@@ -2,9 +2,10 @@ import React from 'react';
 
 import { StyledButton, StyledFollowButton } from './styled'
 
-export const Button = ({ type, handleClick, title, }) => {
+export const Button = ({ type, handleClick, title, ...props }) => {
   return (
     <StyledButton
+      {...props}
       type={type}
       onClick={() => handleClick && handleClick()}
     >
