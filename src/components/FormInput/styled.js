@@ -3,7 +3,7 @@ import searchIcon from '../../assets/images/icons/icon_search.svg'
 
 const primaryInputStyles = {
   marginBottom: '0',
-  padding: '7px',
+  padding: '7px 12px',
   fontSize: '.8rem',
 }
 
