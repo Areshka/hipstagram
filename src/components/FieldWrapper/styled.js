@@ -12,11 +12,16 @@ export const FieldWrap = styled.div`
     margin-left: 15px;
     font-size: .78rem;
   }
+
+  &.edit label {
+    font-size: .8rem;
+    font-weight: bold;
+  }
 `;
 
 export const ErrorMessage = styled.p`
-    margin: 0;
-    margin-left: 10px;
-    font-size: .667rem;
-    color: #ff3535;
+  margin: 0;
+  margin-left: 10px;
+  font-size: .667rem;
+  color: #ff3535;
 `;

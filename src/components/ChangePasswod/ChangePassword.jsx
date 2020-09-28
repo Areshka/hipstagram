@@ -36,7 +36,7 @@ const ChangePassword = () => {
     <>
       <ToastContainer />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FieldWrapper label="New password" error={errors.password || ''}>
+        <FieldWrapper className="edit" label="New password" error={errors.password || ''}>
           <FormInput
             primary
             type="password"
@@ -47,7 +47,7 @@ const ChangePassword = () => {
           />
         </FieldWrapper>
 
-        <FieldWrapper label="Confirm new password" error={errors.confirmPassword || ''}>
+        <FieldWrapper className="edit" label="Confirm new password" error={errors.confirmPassword || ''}>
           <FormInput
             primary
             type="password"

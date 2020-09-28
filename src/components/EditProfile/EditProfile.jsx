@@ -32,7 +32,7 @@ const EditProfile = () => {
     <>
       <ToastContainer />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FieldWrapper label="First name" error={errors.firstName || ''}>
+        <FieldWrapper className="edit" label="First name" error={errors.firstName || ''}>
           <FormInput
             primary
             type="text"
@@ -43,7 +43,7 @@ const EditProfile = () => {
           />
         </FieldWrapper>
 
-        <FieldWrapper label="Last name" error={errors.lastName || ''}>
+        <FieldWrapper className="edit" label="Last name" error={errors.lastName || ''}>
           <FormInput
             primary
             type="text"
@@ -54,7 +54,7 @@ const EditProfile = () => {
           />
         </FieldWrapper>
 
-        <FieldWrapper label="Email" error={errors.email || ''}>
+        <FieldWrapper className="edit" label="Email" error={errors.email || ''}>
           <FormInput
             primary
             type="email"
