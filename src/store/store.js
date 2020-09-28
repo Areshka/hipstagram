@@ -2,13 +2,13 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 
-import authReducer from './auth/reducer';
-import { initThunk } from './auth/thunks';
+import { initThunk } from './users/thunks';
 import modalReducer from './modal/reducer';
+import usersReducer from './users/reducer';
 
 const rootReducer = combineReducers({
   modal: modalReducer,
-  authentication: authReducer,
+  users: usersReducer,
 })
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

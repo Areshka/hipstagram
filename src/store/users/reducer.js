@@ -10,7 +10,7 @@ const createInitialState = () => {
   }
 };
 
-const authReducer = (state = createInitialState(), action) => {
+const usersReducer = (state = createInitialState(), action) => {
   switch (action.type) {
     case ActionTypes.LOGIN_USER:
       return {
@@ -45,4 +45,4 @@ const authReducer = (state = createInitialState(), action) => {
   }
 }
 
-export default authReducer;
+export default usersReducer;

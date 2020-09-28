@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { loginThunk } from '../../store/auth/thunks';
+import { loginThunk } from '../../store/users/thunks';
 
 import FormInput from '../FormInput';
 import { Button } from '../Button/Button';

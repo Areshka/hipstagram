@@ -5,7 +5,7 @@ import Auth from '../Auth/Auth';
 import NotAuth from '../NotAuth/NotAuth';
 import Modal from '../../components/Modal';
 
-import { getAuthStatusSelector } from '../../store/auth/selectors';
+import { getAuthStatusSelector } from '../../store/users/selectors';
 import { isOpenModalStateSelector } from '../../store/modal/selectors'
 
 const Application = () => {
