@@ -1,8 +1,8 @@
 import axios from './axios.instence';
 import { toast, Slide } from "react-toastify";
 
-import store from '../store/store';
-import { logoutThunk } from '../store/users/thunks';
+// import store from '../store/store';
+// import { logoutThunk } from '../store/users/thunks';
 
 axios.interceptors.request.use(
   function (config) {
@@ -29,7 +29,7 @@ axios.interceptors.response.use(
       hideProgressBar: false,
       transition: Slide,
     });
-    store.dispatch(logoutThunk());
+    // store.dispatch(logoutThunk());
     return Promise.reject(error);
   }
 );
