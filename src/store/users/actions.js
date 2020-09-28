@@ -13,9 +13,16 @@ export const logoutAction = () => {
   }
 }
 
-export const getCurrentUserAction = (currentUser) => {
+export const getCurrentUserAction = currentUser => {
   return {
     type: ActionTypes.GET_CURRENT_USER,
+    payload: currentUser
+  }
+}
+
+export const updateCurrentUserAction = currentUser => {
+  return {
+    type: ActionTypes.UPDATE_CURRENT_USER,
     payload: currentUser
   }
 }
