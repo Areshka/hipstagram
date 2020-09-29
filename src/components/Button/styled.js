@@ -38,8 +38,7 @@ export const StyledFollowButton = styled(StyledButton).attrs({
 })` 
   width: 100%;
   padding: 7px 30px;
-  font-size: .778rem;
-  ${props => props.profile && 'margin-bottom: 15px'};
+  font-size: .778rem;  
 
   background-color:${props => props.isFollow ? " #fe7171" : '#4d88ed'};
 
@@ -53,7 +52,7 @@ export const StyledFollowButton = styled(StyledButton).attrs({
 
   @media ${device.mobileM} {
     width: ${props => props.profile ? '100%' : '120px'};
-    ${props => props.profile && 'margin-bottom: 0; font-size: 1.1rem;'};  
+    ${props => props.profile && 'font-size: 1.1rem;'};  
   }
 
   @media ${device.tablet} {    
