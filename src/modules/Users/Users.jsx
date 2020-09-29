@@ -1,7 +1,7 @@
 import React from 'react';
 
 import User from './User';
-import { WrapperContent } from '../Wrapper/Wrapper'
+import { WrapperContent } from '../../components/Wrapper/Wrapper'
 import { ReactComponent as UsersNotFoundImg } from '../../assets/images/icons/icon_not_user.svg'
 
 import { NoUsersBlock } from './styled'

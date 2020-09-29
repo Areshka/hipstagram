@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from 'react-redux';
 
-import FormInput from '../FormInput';
-import { Button } from '../Button/Button';
-import FieldWrapper from '../FieldWrapper';
+import FormInput from '../../components/FormInput';
+import { Button } from '../../components/Button/Button';
+import FieldWrapper from '../../components/FieldWrapper';
 
 import { nameValidation, emailValidationData } from '../../constants/formPatterns';
 import { updateCurrentUserThunk } from '../../store/users/thunks';

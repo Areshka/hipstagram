@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
 
-import EditProfile from '../../components/EditProfile';
-import ChangePassword from '../../components/ChangePasswod';
+import EditProfile from '../../modules/EditProfile';
+import ChangePassword from '../../modules/ChangePasswod';
 import { WrapperContent } from '../../components/Wrapper/Wrapper';
 import { StyledSettings, StyledList, StyledSettingsContent } from './styled';
 

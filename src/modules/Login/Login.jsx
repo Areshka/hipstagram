@@ -2,18 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
-
 import { ToastContainer, Slide } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
+import FormInput from '../../components/FormInput';
+import { Button } from '../../components/Button/Button';
+import FieldWrapper from '../../components/FieldWrapper';
 
 import { loginThunk } from '../../store/users/thunks';
-
-import FormInput from '../FormInput';
-import { Button } from '../Button/Button';
-import FieldWrapper from '../FieldWrapper';
-
 import { loginValidationData, passwordValidationData } from '../../constants/formPatterns';
+
 import { FormAuth, FormAuthTitle, AuthLink } from '../../containers/Auth/styled';
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const dispatch = useDispatch();

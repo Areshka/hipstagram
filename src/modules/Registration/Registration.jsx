@@ -1,16 +1,14 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
-
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Link, useHistory } from 'react-router-dom';
 
 import { registrationThunk } from '../../store/users/thunks';
 
-import FormInput from '../FormInput';
-import { Button } from '../Button/Button';
-import FieldWrapper from '../FieldWrapper';
+import FormInput from '../../components/FormInput';
+import { Button } from '../../components/Button/Button';
+import FieldWrapper from '../../components/FieldWrapper';
 
 import {
   loginValidationData,
@@ -23,6 +21,7 @@ import {
   FormAuthTitle,
   AuthLink
 } from '../../containers/Auth/styled';
+import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
   const dispatch = useDispatch();

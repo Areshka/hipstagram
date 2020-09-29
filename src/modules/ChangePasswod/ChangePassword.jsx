@@ -1,16 +1,16 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { toast, Slide, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-import { Button } from '../Button/Button';
-import FormInput from '../FormInput';
-import FieldWrapper from '../FieldWrapper';
+import FormInput from '../../components/FormInput';
+import { Button } from '../../components/Button/Button';
+import FieldWrapper from '../../components/FieldWrapper';
 
 import { updatePasswordThunk } from '../../store/users/thunks';
 import { passwordValidationData } from '../../constants/formPatterns';
 
+import "react-toastify/dist/ReactToastify.css";
 
 const ChangePassword = () => {
   const dispatch = useDispatch()
