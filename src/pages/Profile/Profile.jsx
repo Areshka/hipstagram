@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   ProfileAccount,
@@ -14,7 +14,10 @@ import { FollowButton } from '../../components/Button/Button';
 import { WrapperContent } from '../../components/Wrapper/Wrapper';
 import { showModal } from '../../store/modal/actions';
 
+import { getCurrentUserSelector } from '../../store/users/selectors';
+
 import ProfileAvatarImg from '../../assets/images/profile-avatar.png';
+import ProfileDefaultAvatarImg from '../../assets/images/icons/icon-default-avatar.svg';
 import ProfileImg1 from '../../assets/images/profile-image-1.jpg';
 import ProfileImg2 from '../../assets/images/profile-image-2.jpg';
 import ProfileImg3 from '../../assets/images/profile-image-3.jpg';
@@ -25,7 +28,8 @@ import ProfileImg6 from '../../assets/images/profile-image-6.jpg';
 const Images = [ProfileImg1, ProfileImg2, ProfileImg3, ProfileImg4, ProfileImg5, ProfileImg6];
 
 const Profile = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { firstName, lastName, avatar } = useSelector(getCurrentUserSelector);
 
   const openModal = () => {
     dispatch(showModal())
@@ -35,7 +39,7 @@ const Profile = () => {
     <WrapperContent>
       <ProfileAccount>
         <ProfileAvatar>
-          <img src={ProfileAvatarImg} alt="" />
+          {avatar ? <img src={ProfileAvatarImg} alt="" /> : <img src={ProfileDefaultAvatarImg} alt="" />}
         </ProfileAvatar>
         <ProfileInfo>
           <ProfileNumbers>
@@ -43,9 +47,9 @@ const Profile = () => {
             <span><strong>300</strong> folowers</span>
             <span><strong>300</strong> folowings</span>
           </ProfileNumbers>
-          <FollowButton profile='true' type="button" title="Follow" />
+          <FollowButton profile="true" type="button" title="Follow" />
           <ProfileText>
-            Not 23, not designer, not from California
+            {`${firstName} ${lastName}`}
           </ProfileText>
         </ProfileInfo>
       </ProfileAccount>
