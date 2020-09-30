@@ -14,9 +14,8 @@ export const registrationThunk = (userData, redirectToLogin) => {
         autoClose: 5000,
         hideProgressBar: false,
         transition: Slide,
+        onClose: () => redirectToLogin(),
       });
-
-      redirectToLogin();
     } catch (error) { }
   }
 }
