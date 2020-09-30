@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { device } from '../../constants/breakpoint';
 
-export const StyledButton = styled.button.attrs({
-  type: 'submit'
-})`
+export const StyledButton = styled.button`
   display: inline-block;
   padding: 11px 59px;  
   font-weight: 400;
@@ -33,13 +31,10 @@ export const StyledButton = styled.button.attrs({
   }
 `;
 
-export const StyledFollowButton = styled(StyledButton).attrs({
-  type: 'button'
-})` 
-  width: 100%;
+export const StyledDefaultButton = styled(StyledButton)`  
   padding: 7px 30px;
   font-size: .778rem;  
-
+ 
   background-color:${props => props.isFollow ? " #fe7171" : '#4d88ed'};
 
   &:hover {
@@ -50,12 +45,29 @@ export const StyledFollowButton = styled(StyledButton).attrs({
     background-color:${props => props.isFollow ? " #f58c8c" : '#76a4f5'};  
   } 
 
-  @media ${device.mobileM} {
-    width: ${props => props.profile ? '100%' : '120px'};
-    ${props => props.profile && 'font-size: 1.1rem;'};  
+  &.btn-follow {
+    padding-left: 0;
+    padding-right: 0;
+    width: 120px;
   }
 
-  @media ${device.tablet} {    
-    ${props => props.profile && 'font-size: 1.333rem;'};  
+  &.btn-profile {
+    width: 100%;
+  }
+
+  @media ${device.mobileM} {
+    font-size: .878rem; 
+   
+    &.btn-profile {
+      font-size: 1.1rem;
+    }    
+  }
+
+  @media ${device.tablet} { 
+    font-size: .978rem;   
+
+     &.btn-profile {
+      font-size: 1.333rem;
+    }       
   }
 `;
