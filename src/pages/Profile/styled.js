@@ -3,7 +3,7 @@ import {
   device
 } from '../../constants/breakpoint';
 
-export const ProfileAccount = styled.div `
+export const ProfileAccount = styled.div`
   margin-bottom: 40px;
 
   @media ${device.mobileM} {
@@ -12,7 +12,7 @@ export const ProfileAccount = styled.div `
   }
 `;
 
-export const ProfileAvatar = styled.div `
+export const ProfileAvatar = styled.div`
   margin-bottom: 15px;
   text-align: center;    
   
@@ -27,7 +27,7 @@ export const ProfileAvatar = styled.div `
   }
 `;
 
-export const ProfileInfo = styled.div `
+export const ProfileInfo = styled.div`
   flex-grow: 1;
   font-size: .889rem; 
 
@@ -43,7 +43,7 @@ export const ProfileInfo = styled.div `
   }
 `;
 
-export const ProfileNumbers = styled.p `
+export const ProfileNumbers = styled.p`
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px; 
@@ -54,22 +54,18 @@ export const ProfileNumbers = styled.p `
   }
 `;
 
-export const ProfileText = styled.p `
-  font-size: .7rem;
+export const ProfileText = styled.p`
+  font-size: .9rem;
   margin-top: 15px;  
 
   @media ${device.mobileM} {
     margin-bottom: 0;
     margin-top: 0;
-    font-size: .8rem;
-  }
-
-  @media ${device.tablet} {   
     font-size: 1rem;
   }
 `;
 
-export const Posts = styled.div `
+export const Posts = styled.div`
   display: flex;
   flex-wrap: wrap;   
   margin-left: -5px;
@@ -81,7 +77,7 @@ export const Posts = styled.div `
   }
 `;
 
-export const PostsItem = styled.div `  
+export const PostsItem = styled.div`  
   width: 50%;   
   margin-bottom: 10px;
   padding-left: 5px;

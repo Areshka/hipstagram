@@ -10,7 +10,7 @@ import {
   Posts,
   PostsItem
 } from './styled'
-import { FollowButton } from '../../components/Button/Button';
+import { DefaultButton } from '../../components/Button/Button';
 import { WrapperContent } from '../../components/Wrapper/Wrapper';
 import { showModal } from '../../store/modal/actions';
 
@@ -47,12 +47,13 @@ const Profile = () => {
             <span><strong>300</strong> folowers</span>
             <span><strong>300</strong> folowings</span>
           </ProfileNumbers>
-          <FollowButton profile="true" type="button" title="Follow" />
+          <DefaultButton type="button" className="btn-profile">Follow</DefaultButton>
           <ProfileText>
             {`${firstName} ${lastName}`}
           </ProfileText>
         </ProfileInfo>
       </ProfileAccount>
+      <DefaultButton type="button">Add post</DefaultButton>
       <Posts>
         {
           Images.map(

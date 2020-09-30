@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { FollowButton } from '../../../components/Button/Button';
+import { DefaultButton } from '../../../components/Button/Button';
 import UserAvatarImg from '../../../assets/images/user_alexa.png';
 
 import {
@@ -17,8 +17,6 @@ const User = () => {
     setIsFollow(!isFollow);
   }
 
-  console.log(isFollow);
-
   return (
     <UserItem>
       <UserInfo>
@@ -27,11 +25,13 @@ const User = () => {
         </UserAvatar>
         <UserName>alexa_blue</UserName>
       </UserInfo>
-      <FollowButton
+      <DefaultButton
+        className="btn-follow"
         isFollow={isFollow}
-        title={isFollow ? "UnFollow" : "Follow"}
         handleClick={handleClick}
-      />
+      >
+        {isFollow ? "UnFollow" : "Follow"}
+      </DefaultButton>
     </UserItem>
   )
 }
