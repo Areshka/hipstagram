@@ -72,7 +72,7 @@ const Registration = () => {
             ref={register(passwordValidationData)}
           />
         </FieldWrapper>
-        <Button title="Sing Up" />
+        <Button type="submit">Sing Up</Button>
       </FormAuth>
       <AuthLink>
         If you have account you can <Link to="/login" >Login</Link>

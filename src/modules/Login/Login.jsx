@@ -53,7 +53,7 @@ const Login = () => {
             ref={register(passwordValidationData)}
           />
         </FieldWrapper>
-        <Button type="submit" title="Sing In" />
+        <Button type="submit">Sing In</Button>
       </FormAuth>
       <AuthLink>
         If you not have account you can <Link to="/registration">Registration</Link>
