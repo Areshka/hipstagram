@@ -19,10 +19,10 @@ const EditProfile = () => {
   const { register, errors, handleSubmit, setValue } = useForm();
 
   useEffect(() => {
-    setValue("firstName", currentUser.firstName)
-    setValue("lastName", currentUser.lastName)
-    setValue("email", currentUser.email)
-  }, [currentUser])
+    setValue("firstName", currentUser.firstName);
+    setValue("lastName", currentUser.lastName);
+    setValue("email", currentUser.email);
+  }, [setValue, currentUser]);
 
   const onSubmit = (data) => {
     dispatch(updateCurrentUserThunk(data))
