@@ -37,6 +37,7 @@ const Login = () => {
         <FormAuthTitle>Sing In</FormAuthTitle>
         <FieldWrapper label="Login" error={errors.login || ''}>
           <FormInput
+            className="auth"
             type="text"
             name="login"
             placeholder="Enter your login"
@@ -46,6 +47,7 @@ const Login = () => {
         </FieldWrapper>
         <FieldWrapper mb label="Password" error={errors.password || ''}>
           <FormInput
+            className="auth"
             type="password"
             name="password"
             placeholder="Enter your password"

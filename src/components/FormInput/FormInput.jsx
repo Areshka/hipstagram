@@ -3,8 +3,7 @@ import React from 'react';
 import { Input } from './styled'
 
 const FormInput = React.forwardRef(
-  ({
-    error,
+  ({    
     onChange,
     ...props
   }, ref) => {

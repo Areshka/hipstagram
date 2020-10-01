@@ -47,6 +47,7 @@ const Registration = () => {
         <FormAuthTitle>Sing Up</FormAuthTitle>
         <FieldWrapper label="Login" error={errors.login}>
           <FormInput
+            className="auth"
             type="text"
             name="login"
             placeholder="Enter your login"
@@ -56,6 +57,7 @@ const Registration = () => {
         </FieldWrapper>
         <FieldWrapper label="Email" error={errors.email}>
           <FormInput
+            className="auth"
             type="email"
             name="email"
             placeholder="Enter your Email"
@@ -65,6 +67,7 @@ const Registration = () => {
         </FieldWrapper>
         <FieldWrapper mb label="Password" error={errors.password}>
           <FormInput
+            className="auth"
             type="password"
             name="password"
             placeholder="Enter your password"

@@ -1,37 +1,34 @@
 import styled from 'styled-components';
 import searchIcon from '../../assets/images/icons/icon_search.svg'
 
-const primaryInputStyles = {
-  marginBottom: '0',
-  padding: '7px 12px',
-  fontSize: '.8rem',
-}
-
-const defaultInputStyles = {
-  padding: '14px 17px 13px',
-  fontSize: '1rem',
-}
-
 export const Input = styled.input` 
   width: 100%;
-  margin-bottom: 6px;  
-  font: normal 1rem/1.22 Roboto, sans-serif;  
+  margin-bottom: ${props => props.invalid ? '6px' : '0'};
+  padding: 9px 12px;
+  font: normal .8rem/1.22 Roboto, sans-serif;
   background-color: #fefefe;
-  border: 2px solid #c0bfbf;
+  border: 1px solid #c0bfbf;
   border-color: ${props => props.invalid ? 'rgb(243, 69, 69)' : '#c0bfbf'};
   border-radius: 10px;
   outline: none;
   transition: border-color .2s linear;
-  
+
+  &:focus {    
+    border-color: ${props => props.invalid ? 'rgb(243, 69, 69)' : '#4d88ed'};
+  }
+
+  &.auth {
+    padding: 14px 17px 13px;
+    font-size: 1rem;
+  }
+
   &.search {
     padding-left: 40px;    
     background: #fefefe url(${searchIcon}) no-repeat 12px center;
     background-size: 15px;
   }
-  
-  ${props => props.primary ? primaryInputStyles : defaultInputStyles};
 
-  &:focus {    
-    border-color: ${props => props.invalid ? 'rgb(243, 69, 69)' : '#4d88ed'};
-  }  
+  &[type="file"] {
+    border: none;
+  }
 `;
