@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { toast, Slide, ToastContainer } from "react-toastify";
 
 import FormInput from '../../components/FormInput';
-import { Button } from '../../components/Button/Button';
+import { DefaultButton } from '../../components/Button/Button';
 import FieldWrapper from '../../components/FieldWrapper';
 
 import { updatePasswordThunk } from '../../store/users/thunks';
@@ -58,7 +58,7 @@ const ChangePassword = () => {
           />
         </FieldWrapper>
 
-        <Button className="btn" type="submit" title="Change password" />
+        <DefaultButton type="submit">Change password</DefaultButton>
       </form>
     </>
   );

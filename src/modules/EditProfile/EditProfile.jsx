@@ -4,8 +4,8 @@ import { ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from 'react-redux';
 
 import FormInput from '../../components/FormInput';
-import { Button } from '../../components/Button/Button';
 import FieldWrapper from '../../components/FieldWrapper';
+import { DefaultButton } from '../../components/Button/Button';
 
 import { nameValidation, emailValidationData } from '../../constants/formPatterns';
 import { updateCurrentUserThunk } from '../../store/users/thunks';
@@ -64,8 +64,7 @@ const EditProfile = () => {
             ref={register(emailValidationData)}
           />
         </FieldWrapper>
-
-        <Button className="btn" type="submit" title="Update" />
+        <DefaultButton type="submit">Update</DefaultButton>
       </form>
     </>
   );
