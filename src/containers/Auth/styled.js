@@ -27,7 +27,8 @@ export const AuthBlock = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;  
-  justify-content: center; 
+  justify-content: center;
+  align-items: center;
 
   @media ${device.tablet}{    
     width: 60%;    
@@ -37,7 +38,9 @@ export const AuthBlock = styled.div`
 export const FormAuth = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;  
+  width: 100%;
+  max-width: 350px;  
   margin-bottom: 40px;
   padding: 0 15px;  
 `;
