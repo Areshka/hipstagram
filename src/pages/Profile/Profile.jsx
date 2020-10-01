@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -10,10 +11,12 @@ import {
   Posts,
   PostsItem
 } from './styled'
+
+import Header from '../../components/Header';
 import { DefaultButton } from '../../components/Button/Button';
 import { WrapperContent } from '../../components/Wrapper/Wrapper';
-import { showModal } from '../../store/modal/actions';
 
+import { showModal } from '../../store/modal/actions';
 import { getCurrentUserSelector } from '../../store/users/selectors';
 
 import ProfileAvatarImg from '../../assets/images/profile-avatar.png';
@@ -36,35 +39,40 @@ const Profile = () => {
   }
 
   return (
-    <WrapperContent>
-      <ProfileAccount>
-        <ProfileAvatar>
-          {avatar ? <img src={ProfileAvatarImg} alt="" /> : <img src={ProfileDefaultAvatarImg} alt="" />}
-        </ProfileAvatar>
-        <ProfileInfo>
-          <ProfileNumbers>
-            <span><strong>2</strong> posts</span>
-            <span><strong>300</strong> folowers</span>
-            <span><strong>300</strong> folowings</span>
-          </ProfileNumbers>
-          <DefaultButton type="button" className="btn-profile">Follow</DefaultButton>
-          <ProfileText>
-            {`${firstName} ${lastName}`}
-          </ProfileText>
-        </ProfileInfo>
-      </ProfileAccount>
-      <DefaultButton type="button">Add post</DefaultButton>
-      <Posts>
-        {
-          Images.map(
-            (img, i) =>
-              <PostsItem key={'img' + i}>
-                <img src={img} alt="" onClick={openModal} />
-              </PostsItem>
-          )
-        }
-      </Posts>
-    </WrapperContent>
+    <>
+      <Header />
+      <WrapperContent>
+        <ProfileAccount>
+          <ProfileAvatar>
+            {avatar ? <img src={ProfileAvatarImg} alt="" /> : <img src={ProfileDefaultAvatarImg} alt="" />}
+          </ProfileAvatar>
+          <ProfileInfo>
+            <ProfileNumbers>
+              <span><strong>2</strong> posts</span>
+              <span><strong>300</strong> folowers</span>
+              <span><strong>300</strong> folowings</span>
+            </ProfileNumbers>
+            <DefaultButton type="button" className="btn-profile">Follow</DefaultButton>
+            <ProfileText>
+              {`${firstName} ${lastName}`}
+            </ProfileText>
+          </ProfileInfo>
+        </ProfileAccount>
+
+        <Link to='/new_post'>Add new post</Link>
+
+        <Posts>
+          {
+            Images.map(
+              (img, i) =>
+                <PostsItem key={'img' + i}>
+                  <img src={img} alt="" onClick={openModal} />
+                </PostsItem>
+            )
+          }
+        </Posts>
+      </WrapperContent>
+    </>
   );
 }
 

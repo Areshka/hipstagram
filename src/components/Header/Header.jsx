@@ -17,14 +17,14 @@ import { ReactComponent as IconUser } from '../../assets/images/icons/icon_user.
 import { ReactComponent as IconLogout } from '../../assets/images/icons/icon_logout.svg';
 import { ReactComponent as IconSettings } from '../../assets/images/icons/icon-settings.svg';
 
-const Header = () => {
+const Header = ({ users }) => {
   const dispatch = useDispatch();
 
   return (
     <MainHeader>
       <Wrapper>
         <MainHeaderInner>
-          {window.location.pathname === '/users' ?
+          {users ?
             <FormSearch onSubmit={e => e.preventDefault()}>
               <FormInput
                 primary

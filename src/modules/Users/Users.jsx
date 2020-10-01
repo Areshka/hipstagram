@@ -1,6 +1,7 @@
 import React from 'react';
 
 import User from './User';
+import Header from '../../components/Header';
 import { WrapperContent } from '../../components/Wrapper/Wrapper'
 import { ReactComponent as UsersNotFoundImg } from '../../assets/images/icons/icon_not_user.svg'
 
@@ -14,20 +15,23 @@ const Users = () => {
   ]
 
   return (
-    <WrapperContent>
-      {users.length ?
-        <div className='users'>
-          <User />
-          <User />
-          <User />
-        </div>
-        :
-        <NoUsersBlock>
-          <UsersNotFoundImg />
-          <p>Users not found</p>
-        </NoUsersBlock>
-      }
-    </WrapperContent>
+    <>
+      <Header users />
+      <WrapperContent>
+        {users.length ?
+          <div className='users'>
+            <User />
+            <User />
+            <User />
+          </div>
+          :
+          <NoUsersBlock>
+            <UsersNotFoundImg />
+            <p>Users not found</p>
+          </NoUsersBlock>
+        }
+      </WrapperContent>
+    </>
   );
 }
 
