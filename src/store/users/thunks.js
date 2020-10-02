@@ -1,8 +1,17 @@
 import { loginFetch, registrationFetch } from '../../api/auth.service';
-import { updateCurrentUserFetch, updatePasswordFetch } from '../../api/users.service';
-import { getCurrentUserAction, loginAction, logoutAction, updateCurrentUserAction } from './actions';
+import {
+  createPostFetch,
+  currentUserFetch,
+  updateCurrentUserFetch,
+  updatePasswordFetch
+} from '../../api/users.service';
+import {
+  loginAction,
+  logoutAction,
+  getCurrentUserAction,
+  updateCurrentUserAction,
+} from './actions';
 import { toast, Slide } from "react-toastify";
-import { currentUserFetch } from '../../api/users.service';
 
 export const registrationThunk = (userData, redirectToLogin) => {
   return async () => {
@@ -78,6 +87,24 @@ export const updatePasswordThunk = (passwords) => {
   }
 }
 
+export const createPostThunk = (formData, redirectToProfile) => {
+  return async () => {
+    try {
+      await createPostFetch(formData);
+
+      toast.success('Post added!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        transition: Slide,
+        onClose: () => redirectToProfile(),
+      });
+    } catch (e) {
+      console.log(e.response.data)
+    }
+  }
+}
+
 export const initThunk = () => {
   return async (dispatch) => {
     try {
@@ -87,8 +114,6 @@ export const initThunk = () => {
       }
       dispatch(loginAction(token))
       dispatch(currentUserThunk())
-    } catch (e) {
-
-    }
+    } catch (e) { }
   }
 }
