@@ -26,3 +26,10 @@ export const updateCurrentUserAction = currentUser => {
     payload: currentUser
   }
 }
+
+export const createPostAction = post => {
+  return {
+    type: ActionTypes.CREATE_POST,
+    payload: post
+  }
+}
