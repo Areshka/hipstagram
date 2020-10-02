@@ -14,3 +14,8 @@ export const updatePasswordFetch = async passwords => {
   const { data } = await axios.post('/auth/updatePassword', passwords);
   return data;
 }
+
+export const createPostFetch = async formData => {
+  const { data } = await axios.post('/posts', formData);
+  return data;
+}
