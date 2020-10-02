@@ -11,6 +11,7 @@ const NotAuthRouter = () => {
     <Switch>
       <Route path='/users' component={Users} />
       <Route path='/profile' component={Profile} />
+      <Route path="/profile/:id" component={Profile} />
       <Route path="/settings" component={Settings} />
       <Route path='/new_post' component={NewPost} />
       <Redirect to='/profile' />
