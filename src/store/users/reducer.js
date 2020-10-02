@@ -7,6 +7,7 @@ const createInitialState = () => {
       authStatus: false,
       access_token: '',
     },
+    usersList: []
   }
 };
 
@@ -24,14 +25,14 @@ const usersReducer = (state = createInitialState(), action) => {
     case ActionTypes.LOGOUT_USER:
       return state = createInitialState();
 
-    case ActionTypes.GET_CURRENT_USER:
+    case ActionTypes.ADD_CURRENT_USER:
       return {
         ...state,
         currentUser: action.payload,
-        auth: {
-          authStatus: true,
-          access_token: localStorage.getItem('access_token')
-        }
+          auth: {
+            authStatus: true,
+            access_token: localStorage.getItem('access_token')
+          }
       };
 
     case ActionTypes.UPDATE_CURRENT_USER:
@@ -42,7 +43,13 @@ const usersReducer = (state = createInitialState(), action) => {
 
     case ActionTypes.CREATE_POST:
       return {
-        ...state        
+        ...state
+      };
+
+    case ActionTypes.GET_USERS:
+      return {
+        ...state,
+        usersList: action.payload
       };
 
     default:

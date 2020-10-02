@@ -15,7 +15,7 @@ export const logoutAction = () => {
 
 export const getCurrentUserAction = currentUser => {
   return {
-    type: ActionTypes.GET_CURRENT_USER,
+    type: ActionTypes.ADD_CURRENT_USER,
     payload: currentUser
   }
 }
@@ -31,5 +31,12 @@ export const createPostAction = post => {
   return {
     type: ActionTypes.CREATE_POST,
     payload: post
+  }
+}
+
+export const getUsersAction = users => {
+  return {
+    type: ActionTypes.GET_USERS,
+    payload: users
   }
 }

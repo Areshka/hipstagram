@@ -1,7 +1,8 @@
 import { loginFetch, registrationFetch } from '../../api/auth.service';
 import {
   createPostFetch,
-  currentUserFetch,
+  getCurrentUserFetch,
+  getUsersFetch,
   updateCurrentUserFetch,
   updatePasswordFetch
 } from '../../api/users.service';
@@ -10,6 +11,7 @@ import {
   logoutAction,
   getCurrentUserAction,
   updateCurrentUserAction,
+  getUsersAction
 } from './actions';
 import { toast, Slide } from "react-toastify";
 
@@ -46,10 +48,12 @@ export const logoutThunk = () => {
   }
 }
 
-export const currentUserThunk = () => {
+export const getCurrentUserThunk = () => {
   return async (dispatch) => {
-    const currentUser = await currentUserFetch();
-    dispatch(getCurrentUserAction(currentUser))
+    try {
+      const currentUser = await getCurrentUserFetch();
+      dispatch(getCurrentUserAction(currentUser))
+    } catch (e) { }
   }
 }
 
@@ -87,6 +91,13 @@ export const updatePasswordThunk = (passwords) => {
   }
 }
 
+export const getUsersThunk = () => {
+  return async (dispatch) => {
+    const users = await getUsersFetch();
+    dispatch(getUsersAction(users))
+  }
+}
+
 export const createPostThunk = (formData, redirectToProfile) => {
   return async () => {
     try {
@@ -113,7 +124,8 @@ export const initThunk = () => {
         return dispatch(logoutThunk())
       }
       dispatch(loginAction(token))
-      dispatch(currentUserThunk())
+      dispatch(getCurrentUserThunk())
+      dispatch(getUsersThunk())
     } catch (e) { }
   }
 }

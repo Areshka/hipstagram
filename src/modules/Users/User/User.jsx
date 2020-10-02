@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { DefaultButton } from '../../../components/Button/Button';
-import UserAvatarImg from '../../../assets/images/user_alexa.png';
+import { ReactComponent as DefaultAvatarImg } from '../../../assets/images/icons/icon-default-avatar.svg';
 
 import {
   UserInfo,
@@ -9,8 +9,9 @@ import {
   UserAvatar,
   UserName
 } from './styled';
+import { Link } from 'react-router-dom';
 
-const User = () => {
+const User = ({ user }) => {
   const [isFollow, setIsFollow] = useState(false);
 
   const handleClick = () => {
@@ -19,12 +20,18 @@ const User = () => {
 
   return (
     <UserItem>
-      <UserInfo>
-        <UserAvatar>
-          <img src={UserAvatarImg} alt="" />
-        </UserAvatar>
-        <UserName>alexa_blue</UserName>
-      </UserInfo>
+      <Link to={'/profile/' + user._id}>
+        <UserInfo>
+          <UserAvatar>
+            {user.avatar ? <img src={user.avatar} alt="" /> : <DefaultAvatarImg />}
+          </UserAvatar>
+
+          <UserName>
+            {user.login}
+          </UserName>
+        </UserInfo>
+      </Link>
+
       <DefaultButton
         className="btn-follow"
         isFollow={isFollow}
