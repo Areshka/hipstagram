@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -21,18 +21,15 @@ import { getCurrentUserSelector } from '../../store/users/selectors';
 
 import ProfileAvatarImg from '../../assets/images/profile-avatar.png';
 import ProfileDefaultAvatarImg from '../../assets/images/icons/icon-default-avatar.svg';
-import ProfileImg1 from '../../assets/images/profile-image-1.jpg';
-import ProfileImg2 from '../../assets/images/profile-image-2.jpg';
-import ProfileImg3 from '../../assets/images/profile-image-3.jpg';
-import ProfileImg4 from '../../assets/images/profile-image-4.jpg';
-import ProfileImg5 from '../../assets/images/profile-image-5.jpg';
-import ProfileImg6 from '../../assets/images/profile-image-6.jpg';
-
-const Images = [ProfileImg1, ProfileImg2, ProfileImg3, ProfileImg4, ProfileImg5, ProfileImg6];
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const { firstName, lastName, avatar } = useSelector(getCurrentUserSelector);
+  const currentUser = useSelector(getCurrentUserSelector);
+  // const { id, firstName, lastName, avatar, posts } = useSelector(getCurrentUserSelector);
+  useEffect(() => {
+    console.log(currentUser.posts)
+
+  })
 
   const openModal = () => {
     dispatch(showModal())
@@ -44,7 +41,7 @@ const Profile = () => {
       <WrapperContent>
         <ProfileAccount>
           <ProfileAvatar>
-            {avatar ? <img src={ProfileAvatarImg} alt="" /> : <img src={ProfileDefaultAvatarImg} alt="" />}
+            {currentUser.avatar ? <img src={ProfileAvatarImg} alt="" /> : <img src={ProfileDefaultAvatarImg} alt="" />}
           </ProfileAvatar>
           <ProfileInfo>
             <ProfileNumbers>
@@ -54,7 +51,7 @@ const Profile = () => {
             </ProfileNumbers>
             <DefaultButton type="button" className="btn-profile">Follow</DefaultButton>
             <ProfileText>
-              {`${firstName} ${lastName}`}
+              {`${currentUser.firstName} ${currentUser.lastName}`}
             </ProfileText>
           </ProfileInfo>
         </ProfileAccount>
@@ -62,14 +59,14 @@ const Profile = () => {
         <Link to='/new_post'>Add new post</Link>
 
         <Posts>
-          {
-            Images.map(
-              (img, i) =>
-                <PostsItem key={'img' + i}>
-                  <img src={img} alt="" onClick={openModal} />
+          {/* {
+            posts.map(
+              (post, i) =>
+                <PostsItem key={'post' + i}>
+                  <img src={post.imgUrl} alt="" onClick={openModal} />
                 </PostsItem>
             )
-          }
+          } */}
         </Posts>
       </WrapperContent>
     </>
