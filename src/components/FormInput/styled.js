@@ -30,5 +30,7 @@ export const Input = styled.input`
 
   &[type="file"] {
     border: none;
+    padding: 0;
+    border-radius: 0;
   }
 `;
