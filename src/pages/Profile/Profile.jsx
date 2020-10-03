@@ -1,16 +1,6 @@
 import React, { useEffect } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
-import {
-  ProfileAccount,
-  ProfileAvatar,
-  ProfileInfo,
-  ProfileNumbers,
-  ProfileText,
-  Posts,
-  PostsItem
-} from './styled'
 
 import Header from '../../components/Header';
 import { DefaultButton } from '../../components/Button/Button';
@@ -25,15 +15,21 @@ import { getUserByIdThunk } from '../../store/users/thunks';
 
 import ProfileDefaultAvatarImg from '../../assets/images/icons/icon-default-avatar.svg';
 
+import {
+  ProfileAccount,
+  ProfileAvatar,
+  ProfileInfo,
+  ProfileNumbers,
+  ProfileText,
+  Posts,
+  PostsItem
+} from './styled';
+
 const Profile = () => {
-  const { id } = useSelector(getCurrentUserSelector);
-
-  const { firstName, lastName, avatar, posts } = useSelector(getUserByIdStateSelector);
   const dispatch = useDispatch();
-
   const { pathname } = useLocation();
-  const ids  = useParams()
-  console.log(ids)
+  const { id } = useSelector(getCurrentUserSelector);
+  const { firstName, lastName, avatar, posts, followersCount, followingsCount } = useSelector(getUserByIdStateSelector);
 
   const getUserId = () => {
     let userId;
@@ -53,11 +49,12 @@ const Profile = () => {
     }
   }, [userId, dispatch])
 
+
   const openModal = () => {
     dispatch(showModal())
   }
 
-  const postsFix = posts || [];  
+  const postsFix = posts || [];
   const postsElements = postsFix.map((post, i) =>
     <PostsItem key={'post' + i}>
       <img src={post.imgUrl} alt="" onClick={openModal} />
@@ -74,9 +71,9 @@ const Profile = () => {
           </ProfileAvatar>
           <ProfileInfo>
             <ProfileNumbers>
-              <span><strong>2</strong> posts</span>
-              <span><strong>300</strong> followers</span>
-              <span><strong>300</strong> followings</span>
+              <span><strong>{postsFix.length}</strong> posts</span>
+              <span><strong>{followersCount}</strong> followers</span>
+              <span><strong>{followingsCount}</strong> followings</span>
             </ProfileNumbers>
             <DefaultButton type="button" className="btn-profile">Follow</DefaultButton>
             <ProfileText>
