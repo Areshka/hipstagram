@@ -19,8 +19,6 @@ const Users = () => {
     dispatch(getUsersThunk())
   }, [dispatch])
 
-  console.log(users)
-
   return (
     <>
       <Header users />
