@@ -18,6 +18,7 @@ export const ProfileAvatar = styled.div`
   
   img {        
     width: 150px;
+    height: 150px;
     border-radius: 50%;    
   }
 

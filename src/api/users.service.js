@@ -24,3 +24,8 @@ export const getUsersFetch = async () => {
   const { data } = await axios.get('/users');
   return data;
 }
+
+export const getUserByIdFetch = async (userId) => {
+  const { data } = await axios.get('/users/' + userId);
+  return data;
+}

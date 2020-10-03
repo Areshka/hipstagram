@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -16,28 +16,53 @@ import Header from '../../components/Header';
 import { DefaultButton } from '../../components/Button/Button';
 import { WrapperContent } from '../../components/Wrapper/Wrapper';
 
+import {
+  getCurrentUserSelector,
+  getUserByIdStateSelector
+} from '../../store/users/selectors';
 import { showModal } from '../../store/modal/actions';
-import { getCurrentUserSelector, getUsersStateSelector } from '../../store/users/selectors';
+import { getUserByIdThunk } from '../../store/users/thunks';
 
-import ProfileAvatarImg from '../../assets/images/profile-avatar.png';
 import ProfileDefaultAvatarImg from '../../assets/images/icons/icon-default-avatar.svg';
 
 const Profile = () => {
-  const { firstName, lastName, avatar, posts } = useSelector(getCurrentUserSelector);
-  const users = useSelector(getUsersStateSelector);
+  const { id } = useSelector(getCurrentUserSelector);
+
+  const { firstName, lastName, avatar, posts } = useSelector(getUserByIdStateSelector);
   const dispatch = useDispatch();
 
   const { pathname } = useLocation();
-  const id = pathname.replace('/profile/', '');
-  const user = users.find(user => user._id === id);  
+  const ids  = useParams()
+  console.log(ids)
+
+  const getUserId = () => {
+    let userId;
+    if (pathname === '/profile') {
+      userId = id;
+    } else {
+      userId = pathname.replace('/profile/', '');
+    }
+    return userId;
+  }
+
+  const userId = getUserId();
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(getUserByIdThunk(userId));
+    }
+  }, [userId, dispatch])
 
   const openModal = () => {
     dispatch(showModal())
   }
 
-  const postsList = posts || [];
-  const postsElements = postsList.map((post, i) => <PostsItem key={'post' + i}><img src={post.imgUrl} alt="" onClick={openModal} /></PostsItem>)
-
+  const postsFix = posts || [];  
+  const postsElements = postsFix.map((post, i) =>
+    <PostsItem key={'post' + i}>
+      <img src={post.imgUrl} alt="" onClick={openModal} />
+    </PostsItem>
+  )
 
   return (
     <>
@@ -45,7 +70,7 @@ const Profile = () => {
       <WrapperContent>
         <ProfileAccount>
           <ProfileAvatar>
-            {avatar ? <img src={ProfileAvatarImg} alt="" /> : <img src={ProfileDefaultAvatarImg} alt="" />}
+            {<img src={avatar ? avatar : ProfileDefaultAvatarImg} alt="" />}
           </ProfileAvatar>
           <ProfileInfo>
             <ProfileNumbers>
@@ -55,16 +80,19 @@ const Profile = () => {
             </ProfileNumbers>
             <DefaultButton type="button" className="btn-profile">Follow</DefaultButton>
             <ProfileText>
-              {`${firstName} ${lastName}`}
+              {`${firstName || 'No firsName'} ${lastName || 'No lastName'}`}
             </ProfileText>
           </ProfileInfo>
         </ProfileAccount>
 
         <Link to='/new_post'>Add new post</Link>
 
-        <Posts>
-          {postsElements}
-        </Posts>
+        {postsElements.length ?
+          <Posts>
+            {postsElements}
+          </Posts> :
+          <p>No posts</p>
+        }
       </WrapperContent>
     </>
   );

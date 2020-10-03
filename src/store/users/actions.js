@@ -40,3 +40,10 @@ export const getUsersAction = users => {
     payload: users
   }
 }
+
+export const getUserByIdAction = user => {
+  return {
+    type: ActionTypes.GET_USER_BY_ID,
+    payload: user
+  }
+}

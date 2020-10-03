@@ -2,6 +2,7 @@ import { loginFetch, registrationFetch } from '../../api/auth.service';
 import {
   createPostFetch,
   getCurrentUserFetch,
+  getUserByIdFetch,
   getUsersFetch,
   updateCurrentUserFetch,
   updatePasswordFetch
@@ -11,7 +12,8 @@ import {
   logoutAction,
   getCurrentUserAction,
   updateCurrentUserAction,
-  getUsersAction
+  getUsersAction,
+  getUserByIdAction
 } from './actions';
 import { toast, Slide } from "react-toastify";
 
@@ -91,13 +93,6 @@ export const updatePasswordThunk = (passwords) => {
   }
 }
 
-export const getUsersThunk = () => {
-  return async (dispatch) => {
-    const users = await getUsersFetch();
-    dispatch(getUsersAction(users))
-  }
-}
-
 export const createPostThunk = (formData, redirectToProfile) => {
   return async () => {
     try {
@@ -113,6 +108,20 @@ export const createPostThunk = (formData, redirectToProfile) => {
     } catch (e) {
       console.log(e.response.data)
     }
+  }
+}
+
+export const getUsersThunk = () => {
+  return async (dispatch) => {
+    const users = await getUsersFetch();
+    dispatch(getUsersAction(users))
+  }
+}
+
+export const getUserByIdThunk = (userId) => {
+  return async (dispatch) => {
+    const user = await getUserByIdFetch(userId);
+    dispatch(getUserByIdAction(user))
   }
 }
 
