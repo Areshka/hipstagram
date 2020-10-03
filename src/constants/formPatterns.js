@@ -65,3 +65,15 @@ export const nameValidation = {
     message: 'Name can contain large and small latin characters'
   }
 }
+
+export const fileValidation = {
+  required: {
+    value: true,
+    message: 'Upload image',
+  },
+
+  pattern: {
+    value: /^.*\.(jpg|JPG|jpeg|JPG|png|PNG)$/,
+    message: 'File extension must be jpg, jpeg or png'
+  }
+}
