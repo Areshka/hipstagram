@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { logoutThunk } from '../../store/users/thunks';
 
 import FormInput from '../FormInput';
@@ -13,7 +13,9 @@ import {
   UserBlock
 } from './styled';
 
+import { ReactComponent as IconHome } from '../../assets/images/icons/icon-home.svg';
 import { ReactComponent as IconUser } from '../../assets/images/icons/icon_user.svg';
+import { ReactComponent as IconUsers } from '../../assets/images/icons/icon-users.svg';
 import { ReactComponent as IconLogout } from '../../assets/images/icons/icon_logout.svg';
 import { ReactComponent as IconSettings } from '../../assets/images/icons/icon-settings.svg';
 
@@ -41,11 +43,29 @@ const Header = ({ users }) => {
             Finded 3 users
           </MainHeaderTitle>
           <UserBlock>
-            <li><Link to='/settings'><IconSettings /></Link></li>
-            <li><Link to='/profile'><IconUser /></Link></li>
+            <li>
+              <NavLink exact to='/' activeClassName="active">
+                <IconHome className="icon" />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/users' activeClassName="active">
+                <IconUsers className="icon" />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/settings' activeClassName="active">
+                <IconSettings className="icon" />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/profile' activeClassName="active">
+                <IconUser className="icon" />
+              </NavLink>
+            </li>
             <li>
               <button onClick={() => { dispatch(logoutThunk()) }}>
-                <IconLogout id="logout" />
+                <IconLogout className="icon" />
               </button>
             </li>
           </UserBlock>

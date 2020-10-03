@@ -75,7 +75,11 @@ export const UserBlock = styled.ul`
       margin: 0;
     }
 
-    svg {
+    .active .icon path {
+      fill: #000;      
+    }
+
+    .icon {
       width: 30px;
       height: 30px;
       cursor: pointer;
