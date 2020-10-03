@@ -93,21 +93,12 @@ export const updatePasswordThunk = (passwords) => {
   }
 }
 
-export const createPostThunk = (formData, redirectToProfile) => {
+export const createPostThunk = ({ formData, redirectToProfile }) => {
   return async () => {
     try {
-      await createPostFetch(formData);
-
-      toast.success('Post added!', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        transition: Slide,
-        onClose: () => redirectToProfile(),
-      });
-    } catch (e) {
-      console.log(e.response.data)
-    }
+      await createPostFetch(formData);     
+      redirectToProfile()
+    } catch (e) {}
   }
 }
 
