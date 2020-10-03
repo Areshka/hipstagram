@@ -2,7 +2,9 @@ import ActionTypes from './actionTypes';
 
 const createInitialState = () => {
   return {
-    currentUser: {},
+    currentUser: {
+      posts: [],
+    },
     auth: {
       authStatus: false,
       access_token: '',
@@ -40,11 +42,6 @@ const usersReducer = (state = createInitialState(), action) => {
       return {
         ...state,
         currentUser: action.payload
-      };
-
-    case ActionTypes.CREATE_POST:
-      return {
-        ...state
       };
 
     case ActionTypes.GET_USERS:

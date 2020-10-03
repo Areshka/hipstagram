@@ -27,13 +27,6 @@ export const updateCurrentUserAction = currentUser => {
   }
 }
 
-export const createPostAction = post => {
-  return {
-    type: ActionTypes.CREATE_POST,
-    payload: post
-  }
-}
-
 export const getUsersAction = users => {
   return {
     type: ActionTypes.GET_USERS,
