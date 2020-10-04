@@ -8,10 +8,14 @@ import { WrapperContent } from '../../components/Wrapper/Wrapper';
 
 import {
   getCurrentUserSelector,
+  getIsFetchingStateSelector,
   getUserByIdStateSelector
 } from '../../store/users/selectors';
 import { showModal } from '../../store/modal/actions';
-import { getUserByIdThunk } from '../../store/users/thunks';
+import {
+  getUserByIdThunk,
+  getCurrentUserThunk
+} from '../../store/users/thunks';
 
 import ProfileDefaultAvatarImg from '../../assets/images/icons/icon-default-avatar.svg';
 
@@ -24,10 +28,12 @@ import {
   Posts,
   PostsItem
 } from './styled';
+import Preloader from '../../components/Preloader/Preloader';
 
 const Profile = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+  const isShowPreloader = useSelector(getIsFetchingStateSelector);
   const { id } = useSelector(getCurrentUserSelector);
   const { firstName, lastName, avatar, posts, followersCount, followingsCount } = useSelector(getUserByIdStateSelector);
 
@@ -44,9 +50,11 @@ const Profile = () => {
   const userId = getUserId();
 
   useEffect(() => {
+    dispatch(getCurrentUserThunk())
     if (userId) {
       dispatch(getUserByIdThunk(userId));
     }
+    return
   }, [userId, dispatch])
 
 
@@ -91,6 +99,7 @@ const Profile = () => {
           <p>No posts</p>
         }
       </WrapperContent>
+      {isShowPreloader && <Preloader />}
     </>
   );
 }

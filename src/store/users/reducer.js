@@ -10,7 +10,8 @@ const createInitialState = () => {
       access_token: '',
     },
     usersList: [],
-    userById: {}
+    userById: {},
+    isFetching: true
   }
 };
 
@@ -47,13 +48,19 @@ const usersReducer = (state = createInitialState(), action) => {
     case ActionTypes.GET_USERS:
       return {
         ...state,
-        usersList: action.payload
+        usersList: action.payload,
       };
 
     case ActionTypes.GET_USER_BY_ID:
       return {
         ...state,
         userById: action.payload
+      };
+
+    case ActionTypes.TOGGLE_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.payload
       };
 
     default:

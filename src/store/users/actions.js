@@ -40,3 +40,10 @@ export const getUserByIdAction = user => {
     payload: user
   }
 }
+
+export const togglePreloaderAction = isFetching => {
+  return {
+    type: ActionTypes.TOGGLE_IS_FETCHING,
+    payload: isFetching
+  }
+}
