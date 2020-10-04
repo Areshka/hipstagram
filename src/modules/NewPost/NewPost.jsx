@@ -16,7 +16,6 @@ const NewPost = () => {
   const dispatch = useDispatch();
   let history = useHistory();
   const { register, handleSubmit, errors, setError } = useForm();
-  console.log(history)
   const redirectToProfile = () => history.push('/profile');
 
   const onSubmit = ({ file, title }) => {

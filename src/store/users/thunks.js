@@ -76,9 +76,7 @@ export const updateCurrentUserThunk = updateUser => {
         hideProgressBar: false,
         transition: Slide,
       });
-    } catch (e) {
-      console.log(e.response.data)
-    }
+    } catch (e) { }
   }
 }
 
@@ -112,7 +110,6 @@ export const getPostByIdThunk = (postId) => {
   return async (dispatch) => {
     try {
       const post = await getPostByIdFetch(postId);
-      // console.log(post)
       dispatch(getPostByIdAction(post));
     } catch (e) { }
   }
