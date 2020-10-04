@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Posts from '../../modules/Posts';
 import Header from '../../components/Header';
 import { DefaultButton } from '../../components/Button/Button';
 import { WrapperContent } from '../../components/Wrapper/Wrapper';
@@ -11,10 +12,10 @@ import {
   getIsFetchingStateSelector,
   getUserByIdStateSelector
 } from '../../store/users/selectors';
-import { showModal } from '../../store/modal/actions';
+
 import {
   getUserByIdThunk,
-  getCurrentUserThunk
+  getCurrentUserThunk,  
 } from '../../store/users/thunks';
 
 import ProfileDefaultAvatarImg from '../../assets/images/icons/icon-default-avatar.svg';
@@ -25,8 +26,6 @@ import {
   ProfileInfo,
   ProfileNumbers,
   ProfileText,
-  Posts,
-  PostsItem
 } from './styled';
 import Preloader from '../../components/Preloader/Preloader';
 
@@ -57,18 +56,6 @@ const Profile = () => {
     return
   }, [userId, dispatch])
 
-
-  const openModal = () => {
-    dispatch(showModal())
-  }
-
-  const postsFix = posts || [];
-  const postsElements = postsFix.map((post, i) =>
-    <PostsItem key={'post' + i}>
-      <img src={post.imgUrl} alt="" onClick={openModal} />
-    </PostsItem>
-  )
-
   return (
     <>
       <Header />
@@ -79,7 +66,7 @@ const Profile = () => {
           </ProfileAvatar>
           <ProfileInfo>
             <ProfileNumbers>
-              <span><strong>{postsFix.length}</strong> posts</span>
+              <span><strong>{posts.length}</strong> posts</span>
               <span><strong>{followersCount}</strong> followers</span>
               <span><strong>{followingsCount}</strong> followings</span>
             </ProfileNumbers>
@@ -92,12 +79,8 @@ const Profile = () => {
 
         <Link to='/new_post'>Add new post</Link>
 
-        {postsElements.length ?
-          <Posts>
-            {postsElements}
-          </Posts> :
-          <p>No posts</p>
-        }
+        <Posts posts={posts} />
+
       </WrapperContent>
       {isShowPreloader && <Preloader />}
     </>
