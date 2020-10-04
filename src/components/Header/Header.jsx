@@ -1,7 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { logoutThunk } from '../../store/users/thunks';
+
+import { logoutThunk, getUsersByLoginThunk } from '../../store/users/thunks';
+import { getUserByIdStateSelector, getUsersStateSelector } from '../../store/users/selectors';
 
 import FormInput from '../FormInput';
 import { Wrapper } from '../Wrapper/Wrapper';
@@ -21,27 +23,44 @@ import { ReactComponent as IconSettings } from '../../assets/images/icons/icon-s
 
 const Header = ({ users }) => {
   const dispatch = useDispatch();
+  const { login } = useSelector(getUserByIdStateSelector);
+  const usersList = useSelector(getUsersStateSelector);
+
+  const handleSearchUsersByLogin = userLogin => {
+    const handler = setTimeout(() => {
+      dispatch(getUsersByLoginThunk(userLogin))
+    }, 500);
+
+    return () => {
+      clearTimeout(handler)
+    };
+
+  }
 
   return (
     <MainHeader>
       <Wrapper>
         <MainHeaderInner>
-          {users ?
+          {users &&
             <FormSearch onSubmit={e => e.preventDefault()}>
               <FormInput
-                primary
                 className="search"
                 type="search"
                 name="search"
                 placeholder="Enter search login"
+                onChange={handleSearchUsersByLogin}
               />
             </FormSearch>
-            : null
           }
 
           <MainHeaderTitle>
-            Finded 3 users
+            {
+              users && usersList.length ?
+                `Finded ${usersList.length} ${usersList.length > 1 ? 'users' : 'user'}` :
+                login
+            }
           </MainHeaderTitle>
+
           <UserBlock>
             <li>
               <NavLink exact to='/' activeClassName="active">

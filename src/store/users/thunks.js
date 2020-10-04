@@ -3,6 +3,7 @@ import {
   createPostFetch,
   getCurrentUserFetch,
   getUserByIdFetch,
+  getUsersByLoginFetch,
   getUsersFetch,
   updateCurrentUserFetch,
   updatePasswordFetch
@@ -13,7 +14,8 @@ import {
   getCurrentUserAction,
   updateCurrentUserAction,
   getUsersAction,
-  getUserByIdAction
+  getUserByIdAction, 
+  togglePreloaderAction
 } from './actions';
 import { toast, Slide } from "react-toastify";
 
@@ -52,9 +54,11 @@ export const logoutThunk = () => {
 
 export const getCurrentUserThunk = () => {
   return async (dispatch) => {
+    dispatch(togglePreloaderAction(true))
     try {
       const currentUser = await getCurrentUserFetch();
       dispatch(getCurrentUserAction(currentUser))
+      dispatch(togglePreloaderAction(false))
     } catch (e) { }
   }
 }
@@ -96,23 +100,38 @@ export const updatePasswordThunk = (passwords) => {
 export const createPostThunk = ({ formData, redirectToProfile }) => {
   return async () => {
     try {
-      await createPostFetch(formData);     
+      await createPostFetch(formData);
       redirectToProfile()
-    } catch (e) {}
+    } catch (e) { }
   }
 }
 
 export const getUsersThunk = () => {
   return async (dispatch) => {
-    const users = await getUsersFetch();
-    dispatch(getUsersAction(users))
+    dispatch(togglePreloaderAction(true))
+    try {
+      const users = await getUsersFetch();
+      dispatch(getUsersAction(users))
+      dispatch(togglePreloaderAction(false))
+    } catch (e) {
+
+    }
   }
 }
 
-export const getUserByIdThunk = (userId) => {
+export const getUserByIdThunk = userId => {
   return async (dispatch) => {
     const user = await getUserByIdFetch(userId);
     dispatch(getUserByIdAction(user))
+  }
+}
+
+export const getUsersByLoginThunk = login => {
+  return async (dispatch) => {
+    try {
+      const users = await getUsersByLoginFetch(login);
+      dispatch(getUsersAction(users))
+    } catch (e) { }
   }
 }
 
@@ -125,7 +144,6 @@ export const initThunk = () => {
       }
       dispatch(loginAction(token))
       dispatch(getCurrentUserThunk())
-      dispatch(getUsersThunk())
     } catch (e) { }
   }
 }

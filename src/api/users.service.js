@@ -29,3 +29,8 @@ export const getUserByIdFetch = async (userId) => {
   const { data } = await axios.get('/users/' + userId);
   return data;
 }
+
+export const getUsersByLoginFetch = async (login) => {
+  const { data } = await axios.get('/users/', { params: { search: login } });
+  return data;
+}
