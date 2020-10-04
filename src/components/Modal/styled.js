@@ -1,36 +1,144 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeInDown = keyframes`  
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+`;
 
 export const StyledModal = styled.div`
   position: fixed;
-  z-index: 1;
+  z-index: 99;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, .4);  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .9);   
 `;
 
 export const StyledModalContent = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80%;
-  padding: 20px;
-  text-align: center;
+  width: 80%;  
+  max-width: 768px;
+  max-height: 80vh;    
+  padding: 0;
   background-color: #fefefe;
-  border: 1px solid #888;  
-  transform: translate(-50%, -50%);
+  border: 1px solid #888;   
+  animation: ${fadeInDown} .2s linear;  
 `;
 
-export const StyledModalClose = styled.span.attrs({
-  type: "button"
+export const StyledModalBody = styled.div`
+  display: flex;
+  height: 60vh;
+`;
+
+export const StyledPostImg = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;  
+  background-color: #000;
+  overflow: hidden;
+
+  img {    
+    width: 100%;    
+  }
+`;
+
+export const StyledUserBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 40%;
+`;
+
+export const StyledUserInfo = styled.div`
+  display: flex;  
+  align-items: center;  
+  padding: 10px;
+  border-bottom: 1px solid #d4d4d4;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+
+  span {
+    font-size: .9rem;
+    font-weight: bold;
+  }
+`;
+
+export const StyledPostTitle = styled.div`
+  padding: 10px;
+  text-align: center;
+  font-size: .8rem;
+  font-weight: bold;
+  border-bottom: 1px solid #d4d4d4;
+`;
+
+export const StyledCommets = styled.div`
+  flex-grow: 1;
+`;
+
+export const StyledUserAction = styled.div`
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;    
+  }
+
+  span {
+    line-height: 20px;
+    font-size: .7rem;
+  }
+`;
+
+export const StyledButton = styled.button.attrs({
+  type: "submit"
 })`
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4d88ed;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+`;
+
+export const FormComment = styled.form`
+  display: flex;
+  align-items: center;
+  padding-right: 5px 10px 5px 0;
+`;
+
+export const StyledModalClose = styled.span`
   position: absolute;
-  top: -5px;
-  right: 5px;
+  top: -35px;
+  right: -25px;
   color: rgb(141, 140, 140);
-  font-size: 28px;
+  font-size: 38px;
   font-weight: bold;
   transition: color .2s ease;
 
