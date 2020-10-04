@@ -28,6 +28,11 @@ export const Input = styled.input`
     background-size: 15px;
   }
 
+  &.comment {
+    padding: 10px;
+    border: none;
+  }
+
   &[type="file"] {
     border: none;
     padding: 0;
