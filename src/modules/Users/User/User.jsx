@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { DefaultButton } from '../../../components/Button/Button';
 import { ReactComponent as DefaultAvatarImg } from '../../../assets/images/icons/icon-default-avatar.svg';
@@ -9,7 +10,6 @@ import {
   UserAvatar,
   UserName
 } from './styled';
-import { Link } from 'react-router-dom';
 
 const User = ({ user }) => {
   const [isFollow, setIsFollow] = useState(false);
