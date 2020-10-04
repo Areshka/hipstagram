@@ -6,7 +6,8 @@ import {
   getUsersByLoginFetch,
   getUsersFetch,
   updateCurrentUserFetch,
-  updatePasswordFetch
+  updatePasswordFetch,
+  getPostByIdFetch
 } from '../../api/users.service';
 import {
   loginAction,
@@ -14,8 +15,9 @@ import {
   getCurrentUserAction,
   updateCurrentUserAction,
   getUsersAction,
-  getUserByIdAction, 
-  togglePreloaderAction
+  getUserByIdAction,
+  togglePreloaderAction,
+  getPostByIdAction
 } from './actions';
 import { toast, Slide } from "react-toastify";
 
@@ -102,6 +104,16 @@ export const createPostThunk = ({ formData, redirectToProfile }) => {
     try {
       await createPostFetch(formData);
       redirectToProfile()
+    } catch (e) { }
+  }
+}
+
+export const getPostByIdThunk = (postId) => {
+  return async (dispatch) => {
+    try {
+      const post = await getPostByIdFetch(postId);
+      // console.log(post)
+      dispatch(getPostByIdAction(post));
     } catch (e) { }
   }
 }

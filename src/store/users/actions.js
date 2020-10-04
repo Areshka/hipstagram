@@ -47,3 +47,10 @@ export const togglePreloaderAction = isFetching => {
     payload: isFetching
   }
 }
+
+export const getPostByIdAction = post => {
+  return {
+    type: ActionTypes.GET_POST_BY_ID,
+    payload: post
+  }
+}

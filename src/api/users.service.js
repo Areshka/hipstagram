@@ -20,6 +20,11 @@ export const createPostFetch = async formData => {
   return data;
 }
 
+export const getPostByIdFetch = async postId => {
+  const { data } = await axios.get('/posts/' + postId);
+  return data;
+}
+
 export const getUsersFetch = async () => {
   const { data } = await axios.get('/users');
   return data;

@@ -5,3 +5,4 @@ export const getCurrentUserSelector = state => usersStateSelector(state).current
 export const getUsersStateSelector = state => usersStateSelector(state).usersList;
 export const getUserByIdStateSelector = state => usersStateSelector(state).userById;
 export const getIsFetchingStateSelector =state => usersStateSelector(state).isFetching;
+export const getPostByIdStateSelector =state => usersStateSelector(state).post;
