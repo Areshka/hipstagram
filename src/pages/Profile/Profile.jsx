@@ -13,10 +13,7 @@ import {
   getUserByIdStateSelector
 } from '../../store/users/selectors';
 
-import {
-  getUserByIdThunk,
-  getCurrentUserThunk,  
-} from '../../store/users/thunks';
+import { getUserByIdThunk } from '../../store/users/thunks';
 
 import ProfileDefaultAvatarImg from '../../assets/images/icons/icon-default-avatar.svg';
 
@@ -49,7 +46,6 @@ const Profile = () => {
   const userId = getUserId();
 
   useEffect(() => {
-    dispatch(getCurrentUserThunk())
     if (userId) {
       dispatch(getUserByIdThunk(userId));
     }
