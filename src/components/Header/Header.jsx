@@ -56,7 +56,7 @@ const Header = ({ users }) => {
           <MainHeaderTitle>
             {
               users && usersList.length ?
-                `Finded ${usersList.length} ${usersList.length > 1 ? 'users' : 'user'}` :
+                `Finded ${usersList.length - 1} ${usersList.length > 1 ? 'users' : 'user'}` :
                 login
             }
           </MainHeaderTitle>
