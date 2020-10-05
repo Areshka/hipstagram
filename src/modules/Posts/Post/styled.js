@@ -8,7 +8,8 @@ export const StyledPostsItem = styled.div`
   padding-right: 5px;  
 
   @media ${device.mobileM} {
-    width: 33.33333%;    
+    width: 33.33333%;   
+    max-height: 250px; 
     margin-bottom: 20px;
     padding-left: 10px;
     padding-right: 10px;
@@ -17,6 +18,8 @@ export const StyledPostsItem = styled.div`
   img {
     display: block;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     cursor: pointer;  
   }
 `;
