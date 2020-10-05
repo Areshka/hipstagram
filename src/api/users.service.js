@@ -6,7 +6,7 @@ export const getCurrentUserFetch = async () => {
 }
 
 export const updateCurrentUserFetch = async updateUser => {
-  const { data } = await axios.patch('/users', updateUser);
+  const { data } = await axios.patch('/users/current', updateUser);
   return data;
 }
 
