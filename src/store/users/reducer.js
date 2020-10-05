@@ -4,6 +4,8 @@ const createInitialState = () => {
   return {
     currentUser: {
       posts: [],
+      followers: [],
+      following: [],
     },
     auth: {
       authStatus: false,
@@ -13,7 +15,7 @@ const createInitialState = () => {
     userById: {
       posts: [],
     },
-    isFetching: true,
+    // isFetching: true,
     post: {},
   }
 };
