@@ -8,18 +8,23 @@ import { WrapperContent } from '../../components/Wrapper/Wrapper'
 import { ReactComponent as UsersNotFoundImg } from '../../assets/images/icons/icon_not_user.svg'
 
 import { getUsersThunk } from '../../store/users/thunks';
-import { getIsFetchingStateSelector, getUsersStateSelector } from '../../store/users/selectors';
+import { getCurrentUserSelector, getIsFetchingStateSelector, getUsersStateSelector } from '../../store/users/selectors';
 
 import { NoUsersBlock } from './styled';
 
 const Users = () => {
   const users = useSelector(getUsersStateSelector);
   let isShowPreloader = useSelector(getIsFetchingStateSelector);
+  const { id: currentId } = useSelector(getCurrentUserSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUsersThunk())
   }, [dispatch])
+
+
+  const userList = users.filter(user => user._id !== currentId)
+    .map(user => <User key={user._id} user={user} />)
 
   return (
     <>
@@ -27,7 +32,7 @@ const Users = () => {
       <WrapperContent>
         {users.length ?
           <div className='users'>
-            {users.map(user => <User key={user._id} user={user} />)}
+            {userList}
           </div>
           :
           <NoUsersBlock>

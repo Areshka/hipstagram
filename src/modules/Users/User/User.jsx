@@ -10,11 +10,24 @@ import {
   UserAvatar,
   UserName
 } from './styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { followUserThunk } from '../../../store/users/thunks';
+import { useEffect } from 'react';
+import { getCurrentUserSelector } from '../../../store/users/selectors';
 
-const User = ({ user }) => {
+const User = ({ user, follow }) => {
   const [isFollow, setIsFollow] = useState(false);
+  const dispatch = useDispatch()
+  let { following } = useSelector(getCurrentUserSelector);
+
+  useEffect(() => {
+    following.forEach(follow => {
+      follow.id === user._id && setIsFollow(true)
+    })
+  }, [following, user._id]);
 
   const handleClick = () => {
+    dispatch(followUserThunk(user._id))
     setIsFollow(!isFollow);
   }
 

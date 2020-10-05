@@ -7,7 +7,7 @@ import {
   getUsersFetch,
   updateCurrentUserFetch,
   updatePasswordFetch,
-  getPostByIdFetch
+  getPostByIdFetch, followUserFetch
 } from '../../api/users.service';
 import {
   loginAction,
@@ -56,12 +56,8 @@ export const logoutThunk = () => {
 
 export const getCurrentUserThunk = () => {
   return async (dispatch) => {
-    dispatch(togglePreloaderAction(true))
-    try {
-      const currentUser = await getCurrentUserFetch();
-      dispatch(getCurrentUserAction(currentUser))
-      dispatch(togglePreloaderAction(false))
-    } catch (e) { }
+    const currentUser = await getCurrentUserFetch();
+    dispatch(getCurrentUserAction(currentUser))
   }
 }
 
@@ -117,11 +113,11 @@ export const getPostByIdThunk = (postId) => {
 
 export const getUsersThunk = () => {
   return async (dispatch) => {
-    dispatch(togglePreloaderAction(true))
+    // dispatch(togglePreloaderAction(true))
     try {
       const users = await getUsersFetch();
       dispatch(getUsersAction(users))
-      dispatch(togglePreloaderAction(false))
+      // dispatch(togglePreloaderAction(false))
     } catch (e) {
 
     }
@@ -141,6 +137,13 @@ export const getUsersByLoginThunk = login => {
       const users = await getUsersByLoginFetch(login);
       dispatch(getUsersAction(users))
     } catch (e) { }
+  }
+}
+
+export const followUserThunk = userId => {
+  return async (dispatch) => {
+    await followUserFetch(userId);
+    dispatch(getCurrentUserThunk())
   }
 }
 

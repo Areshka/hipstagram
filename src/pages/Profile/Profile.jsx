@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -13,7 +13,7 @@ import {
   getUserByIdStateSelector
 } from '../../store/users/selectors';
 
-import { getUserByIdThunk } from '../../store/users/thunks';
+import { followUserThunk, getUserByIdThunk } from '../../store/users/thunks';
 
 import ProfileDefaultAvatarImg from '../../assets/images/icons/icon-default-avatar.svg';
 
@@ -27,6 +27,7 @@ import {
 import Preloader from '../../components/Preloader/Preloader';
 
 const Profile = () => {
+  const [isFollow, setIsFollow] = useState(false);
   const dispatch = useDispatch();
   const isShowPreloader = useSelector(getIsFetchingStateSelector);
   let { id: userId } = useParams();
@@ -43,6 +44,20 @@ const Profile = () => {
     return
   }, [id, dispatch])
 
+
+  let { following } = useSelector(getCurrentUserSelector);
+
+  useEffect(() => {
+    following.forEach(follow => {
+      follow.id === id && setIsFollow(true)
+    })
+  }, [following, id]);
+
+  const handleClick = () => {
+    dispatch(followUserThunk(id))
+    setIsFollow(!isFollow);
+  }
+
   return (
     <>
       <Header />
@@ -57,7 +72,16 @@ const Profile = () => {
               <span><strong>{followersCount}</strong> followers</span>
               <span><strong>{followingsCount}</strong> followings</span>
             </ProfileNumbers>
-            <DefaultButton type="button" className="btn-profile">Follow</DefaultButton>
+
+            {userId && <DefaultButton
+              type="button"
+              className="btn-profile"
+              handleClick={handleClick}
+            >
+              {isFollow ? "UnFollow" : "Follow"}
+            </DefaultButton>
+            }
+
             <ProfileText>
               {`${firstName || 'No firsName'} ${lastName || 'No lastName'}`}
             </ProfileText>
