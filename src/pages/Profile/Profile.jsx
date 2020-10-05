@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Posts from '../../modules/Posts';
@@ -28,29 +28,20 @@ import Preloader from '../../components/Preloader/Preloader';
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const { pathname } = useLocation();
   const isShowPreloader = useSelector(getIsFetchingStateSelector);
-  const { id } = useSelector(getCurrentUserSelector);
+  let { id: userId } = useParams();
+  const { pathname } = useLocation()
+  const { id: currentId } = useSelector(getCurrentUserSelector);
   const { firstName, lastName, avatar, posts, followersCount, followingsCount } = useSelector(getUserByIdStateSelector);
 
-  const getUserId = () => {
-    let userId;
-    if (pathname === '/profile') {
-      userId = id;
-    } else {
-      userId = pathname.replace('/profile/', '');
-    }
-    return userId;
-  }
-
-  const userId = getUserId();
+  let id = pathname === '/profile' ? currentId : userId;;
 
   useEffect(() => {
-    if (userId) {
-      dispatch(getUserByIdThunk(userId));
+    if (id) {
+      dispatch(getUserByIdThunk(id));
     }
     return
-  }, [userId, dispatch])
+  }, [id, dispatch])
 
   return (
     <>

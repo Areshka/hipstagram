@@ -12,8 +12,8 @@ const NotAuthRouter = () => {
     <Switch>
       <Route exact path='/' component={Feed} />
       <Route path='/users' component={Users} />
+      <Route path="/profile/:id" component={Profile} />      
       <Route path='/profile' component={Profile} />
-      <Route path="/profile/:id" component={Profile} />
       <Route path="/settings" component={Settings} />
       <Route path='/new_post' component={NewPost} />
       <Redirect to='/' />
