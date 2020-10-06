@@ -21,7 +21,7 @@ import { ReactComponent as IconUsers } from '../../assets/images/icons/icon-user
 import { ReactComponent as IconLogout } from '../../assets/images/icons/icon_logout.svg';
 import { ReactComponent as IconSettings } from '../../assets/images/icons/icon-settings.svg';
 
-const Header = ({ users }) => {
+const Header = ({ users, title }) => {
   const dispatch = useDispatch();
   const { login } = useSelector(getUserByIdStateSelector);
   const usersList = useSelector(getUsersStateSelector);
@@ -34,7 +34,6 @@ const Header = ({ users }) => {
     return () => {
       clearTimeout(handler)
     };
-
   }
 
   return (
@@ -56,8 +55,8 @@ const Header = ({ users }) => {
           <MainHeaderTitle>
             {
               users && usersList.length ?
-                `Finded ${usersList.length - 1} ${usersList.length > 1 ? 'users' : 'user'}` :
-                login
+                `Finded ${usersList.length} ${usersList.length > 1 ? 'users' : 'user'}` :
+                title || login
             }
           </MainHeaderTitle>
 

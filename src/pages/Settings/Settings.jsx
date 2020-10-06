@@ -10,7 +10,7 @@ import { StyledSettings, StyledList, StyledSettingsContent } from './styled';
 const Settings = () => {
   return (
     <>
-      <Header />
+      <Header title="Settings" />
       <WrapperContent>
         <StyledSettings>
           <StyledList>

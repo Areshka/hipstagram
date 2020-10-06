@@ -22,7 +22,7 @@ const Feed = () => {
 
   return (
     <>
-      <Header />
+      <Header title="Feed" />
       <WrapperContent>
         <FeedContainer>
           {feedElements}
