@@ -36,7 +36,7 @@ const useUser = (user) => {
 }
 
 const User = ({ user }) => {
-  const { isFollow, handleClickFollow } = useUser();
+  const { isFollow, handleClickFollow } = useUser(user);
 
   return (
     <UserItem>
