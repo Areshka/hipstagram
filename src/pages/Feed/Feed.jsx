@@ -18,7 +18,7 @@ const Feed = () => {
     dispatch(getFeedThunk());
   }, [dispatch])
 
-  const feedElements = feed.map(post => <FeedPost key={post._id} post={post} />)
+  const feedElements = feed.map(post => <FeedPost key={post._id} post={post} />).reverse();
 
   return (
     <>

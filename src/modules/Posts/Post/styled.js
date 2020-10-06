@@ -19,7 +19,7 @@ export const StyledPostsItem = styled.div`
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover;    
     cursor: pointer;  
   }
 `;

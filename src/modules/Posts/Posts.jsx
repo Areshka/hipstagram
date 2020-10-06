@@ -3,9 +3,9 @@ import PostsItem from './Post';
 import { StyledPosts } from './styled';
 
 const Posts = ({ posts }) => {
-  const postElements = posts.reverse().map((post, i) =>
+  const postElements = posts.map((post, i) =>
     <PostsItem key={'post' + i} post={post} />
-  )
+  ).reverse()
 
   return (
     <>
