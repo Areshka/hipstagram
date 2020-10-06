@@ -12,7 +12,8 @@ import { getCurrentUserSelector, getIsFetchingStateSelector, getUsersStateSelect
 
 import { NoUsersBlock } from './styled';
 
-const Users = () => {
+// custom useUsers Hook
+const useUsers = () => {
   const users = useSelector(getUsersStateSelector);
   let isShowPreloader = useSelector(getIsFetchingStateSelector);
   const { id: currentId } = useSelector(getCurrentUserSelector);
@@ -25,6 +26,13 @@ const Users = () => {
 
   const userList = users.filter(user => user._id !== currentId)
     .map(user => <User key={user._id} user={user} />)
+
+  return { users, isShowPreloader, userList }
+}
+
+// function component Users
+const Users = () => {
+  const { users, isShowPreloader, userList } = useUsers();
 
   return (
     <>

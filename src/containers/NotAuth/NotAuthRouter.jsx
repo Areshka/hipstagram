@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect, Switch } from "react-router-dom";
 
 import Feed from '../../pages/Feed';
-import Users from '../../modules/Users';
+import Users from '../../pages/Users';
 import Profile from '../../pages/Profile';
 import NewPost from '../../modules/NewPost';
 import Settings from '../../pages/Settings';
