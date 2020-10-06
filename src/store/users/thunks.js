@@ -7,9 +7,9 @@ import {
   getUsersFetch,
   updateCurrentUserFetch,
   updatePasswordFetch,
-  getPostByIdFetch, 
-  followUserFetch, 
-  getFeedFetch, 
+  getPostByIdFetch,
+  followUserFetch,
+  getFeedFetch,
   likePostFetch
 } from '../../api/users.service';
 import {
@@ -20,7 +20,7 @@ import {
   getUsersAction,
   getUserByIdAction,
   togglePreloaderAction,
-  getPostByIdAction, 
+  getPostByIdAction,
   getFeedAction
 } from './actions';
 import { toast, Slide } from "react-toastify";
@@ -160,7 +160,9 @@ export const getFeedThunk = () => {
 
 export const likePostThunk = (postId) => {
   return async (dispatch) => {
-    await likePostFetch(postId);    
+    await likePostFetch(postId);
+    dispatch(getFeedThunk());
+    dispatch(getPostByIdThunk(postId))
   }
 }
 
