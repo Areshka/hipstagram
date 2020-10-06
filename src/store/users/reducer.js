@@ -17,6 +17,7 @@ const createInitialState = () => {
     },
     // isFetching: true,
     post: {},
+    feed: []
   }
 };
 
@@ -73,6 +74,12 @@ const usersReducer = (state = createInitialState(), action) => {
       return {
         ...state,
         post: action.payload
+      };
+
+    case ActionTypes.GET_FEED:
+      return {
+        ...state,
+        feed: action.payload
       };
 
     default:

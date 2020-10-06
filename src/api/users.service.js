@@ -44,3 +44,13 @@ export const followUserFetch = async (userId) => {
   const { data } = await axios.get('/users/follow/' + userId);
   return data;
 }
+
+export const getFeedFetch = async () => {
+  const { data } = await axios.get('/posts/feed');
+  return data;
+}
+
+export const likePostFetch = async (postId) => {
+  const { data } = await axios.get('/posts/like/' + postId);
+  return data;
+}

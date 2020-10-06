@@ -54,3 +54,10 @@ export const getPostByIdAction = post => {
     payload: post
   }
 }
+
+export const getFeedAction = feed => {
+  return {
+    type: ActionTypes.GET_FEED,
+    payload: feed
+  }
+}
