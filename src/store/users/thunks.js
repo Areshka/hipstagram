@@ -19,7 +19,6 @@ import {
   updateCurrentUserAction,
   getUsersAction,
   getUserByIdAction,
-  togglePreloaderAction,
   getPostByIdAction,
   getFeedAction
 } from './actions';
@@ -71,6 +70,7 @@ export const updateCurrentUserThunk = updateUser => {
     try {
       const currentUser = await updateCurrentUserFetch(updateUser);
       dispatch(updateCurrentUserAction(currentUser));
+      dispatch(getCurrentUserThunk())
       toast.success('Profile updated', {
         position: "top-center",
         autoClose: 5000,
@@ -169,6 +169,7 @@ export const initThunk = () => {
         return dispatch(logoutThunk())
       }
       dispatch(loginAction(token))
+      dispatch(getCurrentUserThunk())
     } catch (e) { }
   }
 }

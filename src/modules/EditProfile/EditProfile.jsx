@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,11 @@ import FormInput from '../../components/FormInput';
 import FieldWrapper from '../../components/FieldWrapper';
 import { DefaultButton } from '../../components/Button/Button';
 
-import { nameValidation, emailValidationData } from '../../constants/formPatterns';
+import {
+  nameValidation,
+  emailValidationData,
+  fileValidation
+} from '../../constants/formPatterns';
 import { updateCurrentUserThunk } from '../../store/users/thunks';
 import { getCurrentUserSelector } from '../../store/users/selectors';
 
@@ -16,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 const EditProfile = () => {
   const dispatch = useDispatch()
   const currentUser = useSelector(getCurrentUserSelector);
+  const [avatarUrl, setAvatarUrl] = useState(currentUser.avatar || '');
   const { register, errors, handleSubmit, setValue } = useForm();
 
   useEffect(() => {
@@ -24,14 +29,45 @@ const EditProfile = () => {
     setValue("email", currentUser.email);
   }, [setValue, currentUser]);
 
-  const onSubmit = (data) => {
-    dispatch(updateCurrentUserThunk(data))
+  const onSubmit = ({ firstName, lastName, email }) => {
+    dispatch(updateCurrentUserThunk({
+      firstName,
+      lastName,
+      email,
+      avatar: avatarUrl
+    }))
+  }
+
+  const handleAvatarChange = (e) => {
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      setAvatarUrl(reader.result);
+    }
+
+    reader.readAsDataURL(file)
   }
 
   return (
     <>
       <ToastContainer />
       <form onSubmit={handleSubmit(onSubmit)}>
+        <FieldWrapper
+          className='edit-avatar'
+          forHtml="avatar"
+          label={<img src={avatarUrl} alt="Avatar" />}
+          error={errors.file || ''}
+        >
+          <FormInput
+            id="avatar"
+            type="file"
+            name="file"
+            invalid={'file' in errors}
+            onChange={handleAvatarChange}
+            ref={register(fileValidation)}
+          />
+        </FieldWrapper>
         <FieldWrapper className="edit" label="First name" error={errors.firstName || ''}>
           <FormInput
             primary

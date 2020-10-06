@@ -16,6 +16,27 @@ export const FieldWrap = styled.div`
     font-size: .8rem;
     font-weight: bold;
   }
+
+  &.edit-avatar {
+    text-align: center;
+
+    label {
+      width: 150px;
+      height: 150px;
+      margin-left: 0;
+      display: inline-block;
+      cursor: pointer;
+
+      img {
+        width: 100%; 
+        border-radius: 50%;       
+      }
+    }
+
+    input {
+      display: none;
+    }
+  }
 `;
 
 export const ErrorMessage = styled.p`
