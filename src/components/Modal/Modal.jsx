@@ -1,19 +1,14 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FormInput from '../FormInput';
+import LikesBlock from '../../modules/LikesBlock';
 
 import { hideModal } from '../../store/modal/actions';
 import { getUserByIdThunk } from '../../store/users/thunks';
-import {
-  getPostByIdStateSelector,
-  getUserByIdStateSelector
-} from '../../store/users/selectors';
+import { getPostByIdStateSelector, getUserByIdStateSelector } from '../../store/users/selectors';
 
-import { ReactComponent as IconLikeFalse } from '../../assets/images/icons/icon-like.svg';
-import { ReactComponent as IconLikeTrue } from '../../assets/images/icons/icon-like2.svg';
-import { ReactComponent as IconSend } from '../../assets/images/icons/icon-send.svg';
 
 import {
   StyledModal,
@@ -24,21 +19,17 @@ import {
   StyledPostImg,
   StyledUserInfo,
   StyledPostTitle,
-  StyledUserAction,
   StyledButton,
   FormComment,
   StyledCommets
 } from './styled';
 
-const Modal = () => {
+// custom useModal Hook
+const useModal = () => {
   const dispatch = useDispatch()
-  const [isLike, setIsLike] = useState(false);
+
   const post = useSelector(getPostByIdStateSelector);
   const user = useSelector(getUserByIdStateSelector);
-
-  const handleSetLike = () => {
-    setIsLike(!isLike);
-  }
 
   useEffect(() => {
     if (post.ownerId) {
@@ -51,6 +42,12 @@ const Modal = () => {
       dispatch(hideModal())
     }
   }
+  return { post, user, closeModal, dispatch }
+}
+
+// Function Element
+const Modal = () => {
+  const {post, user, closeModal, dispatch} = useModal();
 
   return (
     <StyledModal id='modal' onClick={closeModal}>
@@ -64,7 +61,7 @@ const Modal = () => {
 
         <StyledModalBody>
           <StyledPostImg>
-            <img src={post.imgUrl} alt="" />
+            <img src={post.imgUrl} alt="Post" />
           </StyledPostImg>
 
           <StyledUserBlock>
@@ -79,14 +76,7 @@ const Modal = () => {
 
             <StyledCommets></StyledCommets>
 
-            <StyledUserAction>
-              {!isLike ?
-                <IconLikeFalse className="icon icon-like" onClick={handleSetLike} /> :
-                <IconLikeTrue className="icon icon-like" onClick={handleSetLike} />
-              }
-              <IconSend className="icon icon-send" />
-              <span>Likes <strong>johny_sins</strong> and <strong>200</strong> other...</span>
-            </StyledUserAction>
+            <LikesBlock post={post} />
 
             <FormComment>
               <FormInput
