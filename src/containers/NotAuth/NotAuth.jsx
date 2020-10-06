@@ -1,18 +1,7 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-
+import React from 'react';
 import NotAuthRouter from './NotAuthRouter';
 
-import { getCurrentUserThunk } from '../../store/users/thunks';
-
 const NotAuth = () => {
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getCurrentUserThunk());
-  }, [dispatch])
-
   return (
     <NotAuthRouter />
   );

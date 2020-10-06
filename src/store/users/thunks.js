@@ -46,6 +46,7 @@ export const loginThunk = (userData) => {
     try {
       const { access_token } = await loginFetch(userData);
       localStorage.setItem('access_token', access_token);
+      dispatch(getCurrentUserThunk())
       dispatch(loginAction(access_token))
     } catch (error) { }
   }
@@ -117,14 +118,8 @@ export const getPostByIdThunk = (postId) => {
 
 export const getUsersThunk = () => {
   return async (dispatch) => {
-    // dispatch(togglePreloaderAction(true))
-    try {
-      const users = await getUsersFetch();
-      dispatch(getUsersAction(users))
-      // dispatch(togglePreloaderAction(false))
-    } catch (e) {
-
-    }
+    const users = await getUsersFetch();
+    dispatch(getUsersAction(users))
   }
 }
 
@@ -174,7 +169,6 @@ export const initThunk = () => {
         return dispatch(logoutThunk())
       }
       dispatch(loginAction(token))
-      dispatch(getCurrentUserThunk())
     } catch (e) { }
   }
 }
