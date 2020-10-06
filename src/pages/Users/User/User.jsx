@@ -15,7 +15,8 @@ import { followUserThunk } from '../../../store/users/thunks';
 import { useEffect } from 'react';
 import { getCurrentUserSelector } from '../../../store/users/selectors';
 
-const User = ({ user, follow }) => {
+// custom useUser Hook
+const useUser = (user) => {
   const [isFollow, setIsFollow] = useState(false);
   const dispatch = useDispatch()
   let { following } = useSelector(getCurrentUserSelector);
@@ -26,10 +27,16 @@ const User = ({ user, follow }) => {
     })
   }, [following, user._id]);
 
-  const handleClick = () => {
+  const handleClickFollow = () => {
     dispatch(followUserThunk(user._id))
     setIsFollow(!isFollow);
   }
+
+  return { isFollow, handleClickFollow }
+}
+
+const User = ({ user }) => {
+  const { isFollow, handleClickFollow } = useUser();
 
   return (
     <UserItem>
@@ -48,7 +55,7 @@ const User = ({ user, follow }) => {
       <DefaultButton
         className="btn-follow"
         isFollow={isFollow}
-        handleClick={handleClick}
+        handleClick={handleClickFollow}
       >
         {isFollow ? "UnFollow" : "Follow"}
       </DefaultButton>
