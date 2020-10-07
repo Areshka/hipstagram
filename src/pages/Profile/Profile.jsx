@@ -24,15 +24,16 @@ import {
   ProfileNumbers,
   ProfileText,
 } from './styled';
-import Preloader from '../../components/Preloader/Preloader';
+// import Preloader from '../../components/Preloader/Preloader';
 
-const Profile = () => {
+//* custom useProfile hook
+const useProfile = () => {
   const [isFollow, setIsFollow] = useState(false);
   const dispatch = useDispatch();
-  const isShowPreloader = useSelector(getIsFetchingStateSelector);
   let { id: userId } = useParams();
-  const { pathname } = useLocation()
-  const { id: currentId } = useSelector(getCurrentUserSelector);
+  const { pathname } = useLocation();
+  const isShowPreloader = useSelector(getIsFetchingStateSelector);
+  const { id: currentId, following } = useSelector(getCurrentUserSelector);
   const { firstName, lastName, avatar, posts, followersCount, followingsCount } = useSelector(getUserByIdStateSelector);
 
   let id = pathname === '/profile' ? currentId : userId;;
@@ -41,11 +42,7 @@ const Profile = () => {
     if (id) {
       dispatch(getUserByIdThunk(id));
     }
-    return
   }, [id, dispatch])
-
-
-  let { following } = useSelector(getCurrentUserSelector);
 
   useEffect(() => {
     following.forEach(follow => {
@@ -57,6 +54,13 @@ const Profile = () => {
     dispatch(followUserThunk(id))
     setIsFollow(!isFollow);
   }
+
+  return { avatar, firstName, lastName, posts, followersCount, followingsCount, userId, handleClick, isShowPreloader }
+}
+
+//* function componnent Profie
+const Profile = () => {
+  const { avatar, firstName, lastName, posts, followersCount, followingsCount, isFollow, userId, handleClick } = useProfile()
 
   return (
     <>
@@ -93,7 +97,7 @@ const Profile = () => {
         <Posts posts={posts} />
 
       </WrapperContent>
-      {isShowPreloader && <Preloader />}
+      {/* {isShowPreloader && <Preloader />} */}
     </>
   );
 }
