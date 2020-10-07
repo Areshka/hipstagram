@@ -66,3 +66,55 @@ export const ProfileText = styled.p`
     font-size: 1rem;
   }
 `;
+
+export const StyledAddPostBtn = styled.div`
+  margin-bottom: 20px;
+
+  a {     
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    
+    font-size: 0rem;
+    border: 1px solid #777;
+    border-radius: 50%;
+    transition: .3s;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;      
+      top: 50%;
+      left: 50%;
+      width: 30px;
+      height: 2px;
+      background-color: #777;
+      transform: translate(-50%, -50%); 
+      transition: .3s; 
+    }
+
+    &::after {      
+      transform: translate(-50%, -50%) rotate(90deg);      
+    } 
+
+    &:hover {
+      border-color: #444;
+
+      &::before, 
+      &::after {
+        background-color: #444;
+      }
+    }   
+
+    &:active {
+      border-color: #777;
+
+      &::before, 
+      &::after {
+        background-color: #777;
+      }
+    }   
+  }
+`;

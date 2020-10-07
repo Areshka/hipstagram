@@ -23,6 +23,7 @@ import {
   ProfileInfo,
   ProfileNumbers,
   ProfileText,
+  StyledAddPostBtn,
 } from './styled';
 // import Preloader from '../../components/Preloader/Preloader';
 
@@ -104,7 +105,9 @@ const Profile = () => {
           </ProfileInfo>
         </ProfileAccount>
 
-        <Link to='/new_post'>Add new post</Link>
+        <StyledAddPostBtn>
+          <Link to='/new_post'>Add new post</Link>
+        </StyledAddPostBtn>
 
         <Posts posts={posts} />
 
