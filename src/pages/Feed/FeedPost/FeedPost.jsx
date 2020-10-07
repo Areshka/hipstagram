@@ -9,7 +9,11 @@ const FeedPost = ({ post, users }) => {
 
   const getLogin = () => {
     let login = '';
-    users.forEach(user => login = user._id === post.ownerId ? user.login : '')
+    users.forEach(user => {
+      if (user._id === post.ownerId) {        
+        login = user.login
+      }
+    })
     return login;
   }
 
