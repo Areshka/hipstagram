@@ -6,7 +6,7 @@ import { ReactComponent as IconLikeTrue } from '../../assets/images/icons/icon-l
 import { ReactComponent as IconLikeFalse } from '../../assets/images/icons/icon-like.svg';
 
 import { StyledLikesBlock } from './style';
-import { likePostThunk } from '../../store/users/thunks';
+import { getUserByIdThunk, likePostThunk } from '../../store/users/thunks';
 import { getCurrentUserSelector } from '../../store/users/selectors';
 
 // custom useLikesBlock Hook
@@ -20,12 +20,13 @@ const useLikesBlock = (post) => {
   useEffect(() => {
     post.likes.forEach(like => {
       like._id === currentUserId && setIsLike(true)
-    })
+    })    
   }, [post.likes, currentUserId]);
 
   const handleSetLike = () => {
     dispatch(likePostThunk(post._id))
     setIsLike(!isLike);
+    dispatch(getUserByIdThunk(post.ownerId))
   }
 
   const lastLikeUserLogin = post.likes.length && post.likes[post.likes.length - 1].login;
