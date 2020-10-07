@@ -1,10 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import LikesBlock from '../../../modules/LikesBlock';
 
 import { StyledFeedPost, StyledFeedPostTitle } from './styled';
 
-const FeedPost = ({ post }) => {
+const FeedPost = ({ post, users }) => {
+
+  const getLogin = () => {
+    let login = '';
+    users.forEach(user => login = user._id === post.ownerId ? user.login : '')
+    return login;
+  }
 
   return (
     <StyledFeedPost>
@@ -12,7 +19,9 @@ const FeedPost = ({ post }) => {
         <img src={post.imgUrl} alt="" />
       </div>
       <StyledFeedPostTitle>
-        <strong className="login">login</strong>
+        <Link to={'/profile/' + post.ownerId}>
+          <strong className="login">{getLogin()}</strong>
+        </Link>
         <span>{post.title}</span>
       </StyledFeedPostTitle>
 

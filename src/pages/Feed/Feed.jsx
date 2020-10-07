@@ -5,20 +5,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/Header';
 import { WrapperContent } from '../../components/Wrapper/Wrapper';
 
-import { getFeedThunk } from '../../store/users/thunks';
-import { getFeedStateSelector } from '../../store/users/selectors';
+import { getFeedThunk, getUsersThunk } from '../../store/users/thunks';
+import { getFeedStateSelector, getUsersStateSelector } from '../../store/users/selectors';
 import FeedPost from './FeedPost';
 import { FeedContainer } from './styled';
 
 const Feed = () => {
   const dispatch = useDispatch();
   const feed = useSelector(getFeedStateSelector);
+  const users = useSelector(getUsersStateSelector);
 
   useEffect(() => {
     dispatch(getFeedThunk());
+    dispatch(getUsersThunk());
   }, [dispatch])
-
-  const feedElements = feed.map(post => <FeedPost key={post._id} post={post} />).reverse();
+  
+  const feedElements = feed.map(post => <FeedPost key={post._id} post={post} users={users} />).reverse();
 
   return (
     <>
