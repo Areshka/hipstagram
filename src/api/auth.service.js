@@ -29,8 +29,8 @@ axios.interceptors.response.use(
       hideProgressBar: false,
       transition: Slide,
     });
-    if (error.response.status) {
-      store.dispatch(logoutThunk());
+    if (error.response.status === 401 || error.response.status === 400) {      
+      store.dispatch(logoutThunk());      
     }
     return Promise.reject(error);
   }
