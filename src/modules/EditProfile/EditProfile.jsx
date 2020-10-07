@@ -56,7 +56,7 @@ const EditProfile = () => {
         <FieldWrapper
           className='edit-avatar'
           forHtml="avatar"
-          label={<img src={avatarUrl} alt="Avatar" />}
+          label={<img src={avatarUrl || currentUser.avatar} alt="Avatar" />}
           error={errors.file || ''}
         >
           <FormInput

@@ -47,7 +47,7 @@ const Header = ({ users, title }) => {
                 type="search"
                 name="search"
                 placeholder="Enter search login"
-                onChange={handleSearchUsersByLogin}
+                onChange={e => handleSearchUsersByLogin(e.target.value)}
               />
             </FormSearch>
           }
