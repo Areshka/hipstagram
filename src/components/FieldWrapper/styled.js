@@ -21,15 +21,37 @@ export const FieldWrap = styled.div`
     text-align: center;
 
     label {
+      position: relative;
       width: 150px;
       height: 150px;
       margin-left: 0;
       display: inline-block;
       cursor: pointer;
+      transition: 0.3s;
 
       img {
         width: 100%; 
-        border-radius: 50%;       
+        height: 100%;       
+        border-radius: 50%;  
+        object-fit: cover;     
+      }             
+
+      &::before {
+        content: 'Change avatar';
+        position: absolute;
+        width: 100%;
+        height: 100%;        
+        font-weight: bold;
+        line-height: 150px;
+        color: #fff;        
+        background-color: rgba(0, 0, 0, .7);
+        border-radius: 50%; 
+        opacity: 0;
+        transition: .3s;
+      }
+
+      &:hover::before {         
+        opacity: 1;
       }
     }
 
