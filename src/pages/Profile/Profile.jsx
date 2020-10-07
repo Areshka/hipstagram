@@ -55,7 +55,18 @@ const useProfile = () => {
     setIsFollow(!isFollow);
   }
 
-  return { avatar, firstName, lastName, posts, followersCount, followingsCount, userId, handleClick, isShowPreloader }
+  return {
+    avatar,
+    firstName,
+    lastName,
+    posts,
+    followersCount,
+    followingsCount,
+    isFollow,
+    userId,
+    handleClick,
+    isShowPreloader
+  }
 }
 
 //* function componnent Profie
@@ -78,6 +89,7 @@ const Profile = () => {
             </ProfileNumbers>
 
             {userId && <DefaultButton
+              isFollow={isFollow}
               type="button"
               className="btn-profile"
               handleClick={handleClick}
