@@ -15,6 +15,7 @@ import {
 import { updateCurrentUserThunk } from '../../store/users/thunks';
 import { getCurrentUserSelector } from '../../store/users/selectors';
 
+import IconDefaultAvatar from '../../assets/images/icons/icon-default-avatar.svg';
 import "react-toastify/dist/ReactToastify.css";
 
 const EditProfile = () => {
@@ -40,7 +41,7 @@ const EditProfile = () => {
 
   const handleAvatarChange = (e) => {
     let reader = new FileReader();
-    let file = e.target.files[0];
+    let file = e.target.files[0];    
 
     reader.onloadend = () => {
       setAvatarUrl(reader.result);
@@ -56,7 +57,9 @@ const EditProfile = () => {
         <FieldWrapper
           className='edit-avatar'
           forHtml="avatar"
-          label={<img src={avatarUrl || currentUser.avatar} alt="Avatar" />}
+          label={
+            <img src={avatarUrl || currentUser.avatar ? avatarUrl || currentUser.avatar : IconDefaultAvatar} alt="Avatar" />
+          }
           error={errors.file || ''}
         >
           <FormInput
@@ -65,7 +68,7 @@ const EditProfile = () => {
             name="file"
             invalid={'file' in errors}
             onChange={handleAvatarChange}
-            ref={register(fileValidation)}
+            ref={register(fileValidation(false))}
           />
         </FieldWrapper>
         <FieldWrapper className="edit" label="First name" error={errors.firstName || ''}>

@@ -66,14 +66,16 @@ export const nameValidation = {
   }
 }
 
-export const fileValidation = {
-  required: {
-    value: true,
-    message: 'Upload image',
-  },
+export const fileValidation = (isRequired = true) => {
+  return {
+    required: {
+      value: isRequired,
+      message: 'Upload image',
+    },
 
-  pattern: {
-    value: /^.*\.(jpg|JPG|jpeg|JPG|png|PNG)$/,
-    message: 'File extension must be jpg, jpeg or png'
+    pattern: {
+      value: /^.*\.(jpg|JPG|jpeg|JPG|png|PNG)$/,
+      message: 'File extension must be jpg, jpeg or png'
+    }
   }
 }

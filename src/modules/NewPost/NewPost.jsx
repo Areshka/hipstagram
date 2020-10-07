@@ -46,7 +46,7 @@ const NewPost = () => {
               type="file"
               name="file"
               invalid={'file' in errors}
-              ref={register(fileValidation)}
+              ref={register(fileValidation())}
             />
           </FieldWrapper>
 
