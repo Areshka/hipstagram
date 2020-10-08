@@ -51,6 +51,11 @@ export const ProfileNumbers = styled.p`
   margin-bottom: 15px; 
   margin-top: 0;
 
+  a {
+    text-decoration: none;
+    color: #1a1a2e;
+  }
+
   @media ${device.mobileM} {
     margin-bottom: 0;  
   }
