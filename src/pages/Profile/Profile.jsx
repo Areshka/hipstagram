@@ -66,13 +66,14 @@ const useProfile = () => {
     isFollow,
     userId,
     handleClick,
-    isShowPreloader
+    isShowPreloader,
+    id
   }
 }
 
 //* function componnent Profie
 const Profile = () => {
-  const { avatar, firstName, lastName, posts, followersCount, followingsCount, isFollow, userId, handleClick } = useProfile()
+  const { avatar, firstName, lastName, posts, followersCount, followingsCount, isFollow, userId, id, handleClick } = useProfile()
 
   return (
     <>
@@ -85,8 +86,16 @@ const Profile = () => {
           <ProfileInfo>
             <ProfileNumbers>
               <span><strong>{posts.length}</strong> posts</span>
-              <span><strong>{followersCount}</strong> followers</span>
-              <span><strong>{followingsCount}</strong> followings</span>
+              <span>
+                <Link to={'/followers/' + id}>
+                  <strong>{followersCount}</strong> followers
+                </Link>
+              </span>
+              <span>
+                <Link to={'/followings/' + id}>
+                  <strong>{followingsCount}</strong> followings
+                </Link>
+              </span>
             </ProfileNumbers>
 
             {userId && <DefaultButton
