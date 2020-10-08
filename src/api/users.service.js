@@ -50,7 +50,12 @@ export const getFeedFetch = async () => {
   return data;
 }
 
-export const likePostFetch = async (postId) => {
+export const likePostFetch = async postId => {
   const { data } = await axios.get('/posts/like/' + postId);
+  return data;
+}
+
+export const getFollowersFollowingsUserByIdFetch = async userId => {
+  const { data } = await axios.get('/users/followersAndFollowing/' + userId);
   return data;
 }
