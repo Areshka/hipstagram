@@ -7,6 +7,8 @@ import Settings from '../../pages/Settings';
 import Preloader from '../../components/Preloader/Preloader';
 const Feed = React.lazy(() => import('../../pages/Feed'));
 const Users = React.lazy(() => import('../../pages/Users'));
+const Followers = React.lazy(() => import('../../modules/Followers'));
+const Followings = React.lazy(() => import('../../modules/Followings'));
 
 const NotAuthRouter = () => {
   return (
@@ -29,6 +31,16 @@ const NotAuthRouter = () => {
       </Route>
       <Route path="/settings" component={Settings} />
       <Route path='/new_post' component={NewPost} />
+      <Route path='/followers/:id' >
+        <Suspense fallback={<Preloader />}>
+          <Followers />
+        </Suspense>
+      </Route>
+      <Route path='/followings/:id' >
+        <Suspense fallback={<Preloader />}>
+          <Followings />
+        </Suspense>
+      </Route>
       <Redirect to='/' />
     </Switch>
   );
