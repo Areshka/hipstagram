@@ -20,6 +20,17 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   function (response) {
+    if (response.config.url === "/users/current" &&
+      response.config.method === 'patch' &&
+      response.status === 200) {
+      toast.success('Profile updated', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        transition: Slide,
+      });
+    }
+
     return response;
   },
   function (error) {
@@ -29,8 +40,9 @@ axios.interceptors.response.use(
       hideProgressBar: false,
       transition: Slide,
     });
-    if (error.response.status === 401 || error.response.status === 400) {      
-      store.dispatch(logoutThunk());      
+    if (error.response.status === 401 || error.response.status === 400) {
+      console.log(error.response.status)
+      store.dispatch(logoutThunk());
     }
     return Promise.reject(error);
   }

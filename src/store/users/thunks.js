@@ -67,17 +67,9 @@ export const getCurrentUserThunk = () => {
 
 export const updateCurrentUserThunk = updateUser => {
   return async (dispatch) => {
-    try {
-      const currentUser = await updateCurrentUserFetch(updateUser);
-      dispatch(updateCurrentUserAction(currentUser));
-      dispatch(getCurrentUserThunk())
-      toast.success('Profile updated', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        transition: Slide,
-      });
-    } catch (e) { }
+    const currentUser = await updateCurrentUserFetch(updateUser);
+    dispatch(updateCurrentUserAction(currentUser));
+    dispatch(getCurrentUserThunk())
   }
 }
 
