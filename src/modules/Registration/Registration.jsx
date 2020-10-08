@@ -22,6 +22,7 @@ import {
   AuthLink
 } from '../../containers/Auth/styled';
 import "react-toastify/dist/ReactToastify.css";
+import { routes } from '../../constants/routes';
 
 const Registration = () => {
   const dispatch = useDispatch();
@@ -78,7 +79,7 @@ const Registration = () => {
         <Button type="submit">Sing Up</Button>
       </FormAuth>
       <AuthLink>
-        If you have account you can <Link to="/login" >Login</Link>
+        If you have account you can <Link to={routes.login.path} >Login</Link>
       </AuthLink>
     </>
   );

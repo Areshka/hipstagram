@@ -13,6 +13,7 @@ import { loginValidationData, passwordValidationData } from '../../constants/for
 
 import { FormAuth, FormAuthTitle, AuthLink } from '../../containers/Auth/styled';
 import "react-toastify/dist/ReactToastify.css";
+import { routes } from '../../constants/routes';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ const Login = () => {
         <Button type="submit">Sing In</Button>
       </FormAuth>
       <AuthLink>
-        If you not have account you can <Link to="/registration">Registration</Link>
+        If you not have account you can <Link to={routes.registration.path}>Registration</Link>
       </AuthLink>
     </>
   );
