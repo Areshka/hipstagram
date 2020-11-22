@@ -28,7 +28,7 @@ const useUsers = () => {
 
   useEffect(() => {
     dispatch(getUsersThunk());
-    if (users.length === 0) dispatch(showLoaderAction());
+    if (!users.length) dispatch(showLoaderAction());
   }, []);
 
   const userList = users
@@ -45,8 +45,7 @@ const Users = () => {
   return (
     <>
       <Header users />
-      <WrapperContent>
-        {/* {loading && <Preloader />} */}
+      <WrapperContent>       
         {loading ? (
           <Preloader />
         ) : users.length ? (

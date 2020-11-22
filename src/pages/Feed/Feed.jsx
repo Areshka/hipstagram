@@ -21,13 +21,13 @@ const Feed = () => {
   const feed = useSelector(getFeedStateSelector);
   const users = useSelector(getUsersStateSelector);
 
-  const loading = useSelector(getLoading);
+  const loading = useSelector(getLoading);  
 
   useEffect(() => {
     dispatch(getFeedThunk());
     dispatch(getUsersThunk());
-    if (feed.length === 0) dispatch(showLoaderAction);
-  }, [dispatch]);
+    if (!feed.length) dispatch(showLoaderAction());
+  }, []);
 
   const feedElements = feed
     .map((post) => <FeedPost key={post._id} post={post} users={users} />)
@@ -38,8 +38,13 @@ const Feed = () => {
       <Header title="Feed" />
       <WrapperContent>
         <FeedContainer>
-          {loading && <Preloader />}
-          {feedElements}
+          {loading ? (
+            <Preloader />
+          ) : feed.length ? (
+            feedElements
+          ) : (
+            <p>No feed</p>
+          )}
         </FeedContainer>
       </WrapperContent>
     </>

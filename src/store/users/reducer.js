@@ -79,14 +79,15 @@ const usersReducer = (state = createInitialState(), action) => {
     case ActionTypes.GET_POST_BY_ID:
       return {
         ...state,
-        post: action.payload,
-        loading: false,
+        post: action.payload,  
+        loading: false,      
       };
 
     case ActionTypes.GET_FEED:
       return {
         ...state,
         feed: action.payload,
+        loading: false,
       };
 
     default:
