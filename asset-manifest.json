@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/hipstagram/static/css/main.992b9fa6.chunk.css",
-    "main.js": "/hipstagram/static/js/main.0a263f4b.chunk.js",
-    "main.js.map": "/hipstagram/static/js/main.0a263f4b.chunk.js.map",
+    "main.js": "/hipstagram/static/js/main.fb6bf677.chunk.js",
+    "main.js.map": "/hipstagram/static/js/main.fb6bf677.chunk.js.map",
     "runtime-main.js": "/hipstagram/static/js/runtime-main.bc359c13.js",
     "runtime-main.js.map": "/hipstagram/static/js/runtime-main.bc359c13.js.map",
     "static/css/2.83342f34.chunk.css": "/hipstagram/static/css/2.83342f34.chunk.css",
@@ -32,6 +32,6 @@
     "static/css/2.83342f34.chunk.css",
     "static/js/2.0f0f3eeb.chunk.js",
     "static/css/main.992b9fa6.chunk.css",
-    "static/js/main.0a263f4b.chunk.js"
+    "static/js/main.fb6bf677.chunk.js"
   ]
 }
