@@ -3,7 +3,7 @@ const API_CONFIG_DEV = {
 }
 
 const API_CONFIG_PROD = {
-  baseUrl: process.env.BASE_URL,
+  baseUrl: process.env.REACT_APP_BASE_URL,
 }
 
 export const API_CONFIG = process.env.NODE_ENV !== 'production' ? API_CONFIG_DEV : API_CONFIG_PROD;
