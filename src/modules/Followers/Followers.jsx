@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import Header from '../../components/Header';
-import { WrapperContent } from '../../components/Wrapper/Wrapper';
+import Header from "../../components/Header";
+import { WrapperContent } from "../../components/Wrapper/Wrapper";
 
-import { getUserByIdThunk } from '../../store/users/thunks';
-import { getUserByIdStateSelector } from '../../store/users/selectors';
-import { getFollowersFollowingsUserByIdFetch } from '../../api/users.service';
+import { getUserByIdThunk } from "../../store/users/thunks";
+import { getUserByIdStateSelector } from "../../store/users/selectors";
+import { getFollowersFollowingsUserByIdFetch } from "../../api/users.service";
 
-import IconDefaultAvatar from '../../assets/images/icons/icon-default-avatar.svg';
-import { StyledFollowersList } from './styled';
+import IconDefaultAvatar from "../../assets/images/icons/icon-default-avatar.svg";
+import { StyledFollowersList } from "./styled";
 
 // custom useFollowers hook
 const useFollowers = () => {
@@ -21,8 +21,8 @@ const useFollowers = () => {
 
   useEffect(() => {
     async function fetchData() {
-      let { followers } = await getFollowersFollowingsUserByIdFetch(id)
-      setFollowers(followers)
+      let { followers } = await getFollowersFollowingsUserByIdFetch(id);
+      setFollowers(followers);
     }
 
     fetchData();
@@ -30,31 +30,42 @@ const useFollowers = () => {
     dispatch(getUserByIdThunk(id));
   }, [id, dispatch]);
 
-  return { login, followers }
-}
+  return { login, followers };
+};
 
 // function component Followers
 const Followers = () => {
-  const { login, followers } = useFollowers()
+  const { login, followers } = useFollowers();
 
   return (
     <>
       <Header title={`Followers ${login}`} />
       <WrapperContent>
         <StyledFollowersList>
-          {followers.map(follower =>
-            <li key={follower.id}>
-              <Link to={'/profile/' + follower.id}>
-                {<img src={follower.avatar || IconDefaultAvatar} alt={follower.login} />}
-                <p>{`${follower.login} - `}
-                  <span className="full-name">{`${follower.firstName} ${follower.lastName}`}</span>
-                </p>
-              </Link>
-            </li>)}
+          {followers.length ? (
+            followers.map((follower) => (
+              <li key={follower.id}>
+                <Link to={"/profile/" + follower.id}>
+                  {
+                    <img
+                      src={follower.avatar || IconDefaultAvatar}
+                      alt={follower.login}
+                    />
+                  }
+                  <p>
+                    {`${follower.login} - `}
+                    <span className="full-name">{`${follower.firstName} ${follower.lastName}`}</span>
+                  </p>
+                </Link>
+              </li>
+            ))
+          ) : (
+            <p>No Followers</p>
+          )}
         </StyledFollowersList>
       </WrapperContent>
     </>
   );
-}
+};
 
 export default Followers;
