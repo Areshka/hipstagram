@@ -1,4 +1,4 @@
-import ActionTypes from './actionTypes';
+import ActionTypes from "./actionTypes";
 
 const createInitialState = () => {
   return {
@@ -9,31 +9,37 @@ const createInitialState = () => {
     },
     auth: {
       authStatus: false,
-      access_token: '',
+      access_token: "",
     },
     usersList: [],
     userById: {
       posts: [],
     },
-    // isFetching: true,
+    loading: false,
     post: {},
-    feed: []
-  }
+    feed: [],
+  };
 };
 
 const usersReducer = (state = createInitialState(), action) => {
   switch (action.type) {
+    case ActionTypes.SHOW_LOADER:
+      return {
+        ...state,
+        loading: true,
+      };
+
     case ActionTypes.LOGIN_USER:
       return {
         ...state,
         auth: {
           authStatus: true,
-          access_token: action.payload
-        }
+          access_token: action.payload,
+        },
       };
 
     case ActionTypes.LOGOUT_USER:
-      return state = createInitialState();
+      return (state = createInitialState());
 
     case ActionTypes.ADD_CURRENT_USER:
       return {
@@ -41,50 +47,51 @@ const usersReducer = (state = createInitialState(), action) => {
         currentUser: action.payload,
         auth: {
           authStatus: true,
-          access_token: localStorage.getItem('access_token')
-        }
+          access_token: localStorage.getItem("access_token"),
+        },
       };
 
     case ActionTypes.UPDATE_CURRENT_USER:
       return {
         ...state,
-        currentUser: action.payload
+        currentUser: action.payload,
       };
 
     case ActionTypes.GET_USERS:
       return {
         ...state,
         usersList: action.payload,
+        loading: false,
       };
 
     case ActionTypes.GET_USER_BY_ID:
       return {
         ...state,
-        userById: action.payload
+        userById: action.payload,
       };
 
     case ActionTypes.TOGGLE_IS_FETCHING:
       return {
         ...state,
-        isFetching: action.payload
+        isFetching: action.payload,
       };
-
 
     case ActionTypes.GET_POST_BY_ID:
       return {
         ...state,
-        post: action.payload
+        post: action.payload,
+        loading: false,
       };
 
     case ActionTypes.GET_FEED:
       return {
         ...state,
-        feed: action.payload
+        feed: action.payload,
       };
 
     default:
       return state;
   }
-}
+};
 
 export default usersReducer;

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const fadeInDown = keyframes`  
   from {
@@ -26,18 +26,18 @@ export const StyledModal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, .9);   
+  background-color: rgba(0, 0, 0, 0.9);
 `;
 
 export const StyledModalContent = styled.div`
   position: absolute;
-  width: 80%;  
+  width: 80%;
   max-width: 768px;
-  max-height: 80vh;    
+  max-height: 80vh;
   padding: 0;
   background-color: #fefefe;
-  border: 1px solid #888;   
-  animation: ${fadeInDown} .2s linear;  
+  border: 1px solid #888;
+  animation: ${fadeInDown} 0.2s linear;
 `;
 
 export const StyledModalBody = styled.div`
@@ -46,15 +46,16 @@ export const StyledModalBody = styled.div`
 `;
 
 export const StyledPostImg = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;  
+  width: 60%;
   background-color: #000;
   overflow: hidden;
 
-  img {    
-    width: 100%;    
+  img {
+    width: 100%;
   }
 `;
 
@@ -66,8 +67,8 @@ export const StyledUserBlock = styled.div`
 `;
 
 export const StyledUserInfo = styled.div`
-  display: flex;  
-  align-items: center;  
+  display: flex;
+  align-items: center;
   padding: 10px;
   border-bottom: 1px solid #d4d4d4;
 
@@ -79,7 +80,7 @@ export const StyledUserInfo = styled.div`
   }
 
   span {
-    font-size: .9rem;
+    font-size: 0.9rem;
     font-weight: bold;
   }
 `;
@@ -87,7 +88,7 @@ export const StyledUserInfo = styled.div`
 export const StyledPostTitle = styled.div`
   padding: 10px;
   text-align: center;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: bold;
   border-bottom: 1px solid #d4d4d4;
 `;
@@ -97,7 +98,7 @@ export const StyledCommets = styled.div`
 `;
 
 export const StyledButton = styled.button.attrs({
-  type: "submit"
+  type: "submit",
 })`
   font-size: 1.2rem;
   font-weight: bold;
@@ -121,7 +122,7 @@ export const StyledModalClose = styled.span`
   color: rgb(141, 140, 140);
   font-size: 38px;
   font-weight: bold;
-  transition: color .2s ease;
+  transition: color 0.2s ease;
 
   &:hover,
   &:focus {

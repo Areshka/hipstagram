@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { device } from '../../constants/breakpoint';
+import styled from "styled-components";
+import { device } from "../../constants/breakpoint";
 
 export const Container = styled.div`
   width: 100%;
@@ -9,14 +9,15 @@ export const Container = styled.div`
 `;
 
 export const StyledWrapperContent = styled.div`
-  min-height: 100vh;  
+  position: relative;
+  min-height: 100vh;
   width: 100%;
   max-width: 768px;
-  margin: 0 auto;  
+  margin: 0 auto;
   padding: 130px 30px 50px;
-  background-color: #fff; 
+  background-color: #fff;
 
   @media ${device.mobileM} {
-    padding-top: 100px;  
+    padding-top: 100px;
   }
 `;

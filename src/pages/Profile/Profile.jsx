@@ -8,8 +8,7 @@ import { DefaultButton } from '../../components/Button/Button';
 import { WrapperContent } from '../../components/Wrapper/Wrapper';
 
 import {
-  getCurrentUserSelector,
-  getIsFetchingStateSelector,
+  getCurrentUserSelector,  
   getUserByIdStateSelector
 } from '../../store/users/selectors';
 
@@ -33,7 +32,6 @@ const useProfile = () => {
   const dispatch = useDispatch();
   let { id: userId } = useParams();
   const { pathname } = useLocation();
-  const isShowPreloader = useSelector(getIsFetchingStateSelector);
   const { id: currentId, following } = useSelector(getCurrentUserSelector);
   const { firstName, lastName, avatar, posts, followersCount, followingsCount } = useSelector(getUserByIdStateSelector);
 
@@ -65,8 +63,7 @@ const useProfile = () => {
     followingsCount,
     isFollow,
     userId,
-    handleClick,
-    isShowPreloader,
+    handleClick,    
     id
   }
 }

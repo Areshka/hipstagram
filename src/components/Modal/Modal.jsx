@@ -1,14 +1,16 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import FormInput from "../FormInput";
+import LikesBlock from "../../modules/LikesBlock";
 
-import FormInput from '../FormInput';
-import LikesBlock from '../../modules/LikesBlock';
-
-import { hideModal } from '../../store/modal/actions';
-import { getUserByIdThunk } from '../../store/users/thunks';
-import { getPostByIdStateSelector, getUserByIdStateSelector } from '../../store/users/selectors';
-
+import { hideModal } from "../../store/modal/actions";
+import { getUserByIdThunk } from "../../store/users/thunks";
+import {
+  getLoading,
+  getPostByIdStateSelector,
+  getUserByIdStateSelector,
+} from "../../store/users/selectors";
 
 import {
   StyledModal,
@@ -21,38 +23,41 @@ import {
   StyledPostTitle,
   StyledButton,
   FormComment,
-  StyledCommets
-} from './styled';
+  StyledCommets,
+} from "./styled";
+import { showLoaderAction } from "../../store/users/actions";
+import Preloader from "../Preloader/Preloader";
 
 // custom useModal Hook
 const useModal = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const post = useSelector(getPostByIdStateSelector);
   const user = useSelector(getUserByIdStateSelector);
+  const loading = useSelector(getLoading);
 
   useEffect(() => {
     if (post.ownerId) {
       dispatch(getUserByIdThunk(post.ownerId));
+      dispatch(showLoaderAction());
     }
-  }, [post.ownerId, dispatch])
+  }, [post.ownerId, dispatch]);
 
   const closeModal = (e) => {
     if (e.target.getAttribute("id") === "modal") {
-      dispatch(hideModal())
+      dispatch(hideModal());
     }
-  }
-  return { post, user, closeModal, dispatch }
-}
+  };
+  return { post, user, closeModal, dispatch, loading };
+};
 
 // Function Element
 const Modal = () => {
-  const {post, user, closeModal, dispatch} = useModal();
+  const { post, user, closeModal, dispatch, loading } = useModal();
 
   return (
-    <StyledModal id='modal' onClick={closeModal}>
+    <StyledModal id="modal" onClick={closeModal}>
       <StyledModalContent>
-
         <div className="modal-header">
           <StyledModalClose onClick={() => dispatch(hideModal())}>
             &times;
@@ -61,7 +66,7 @@ const Modal = () => {
 
         <StyledModalBody>
           <StyledPostImg>
-            <img src={post.imgUrl} alt="Post" />
+            {loading ? <Preloader /> : <img src={post.imgUrl} alt="Post" />}            
           </StyledPostImg>
 
           <StyledUserBlock>
@@ -70,9 +75,7 @@ const Modal = () => {
               <span>{user.login}</span>
             </StyledUserInfo>
 
-            <StyledPostTitle>
-              {post.title || 'No title'}
-            </StyledPostTitle>
+            <StyledPostTitle>{post.title || "No title"}</StyledPostTitle>
 
             <StyledCommets></StyledCommets>
 
@@ -87,14 +90,11 @@ const Modal = () => {
               />
               <StyledButton>Send</StyledButton>
             </FormComment>
-
           </StyledUserBlock>
-
         </StyledModalBody>
-
       </StyledModalContent>
     </StyledModal>
-  )
-}
+  );
+};
 
 export default Modal;
