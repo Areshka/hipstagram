@@ -1,6 +1,7 @@
 # Hipstagram
 
 Application where you can share your best photos with your friends
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
